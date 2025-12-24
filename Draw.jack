@@ -1,0 +1,65 @@
+class Draw {
+    function void clearScreen() {
+        do Screen.setColor(true);
+        do Screen.drawRectangle(0, 0, 511, 255);
+        do Screen.setColor(false);
+        do Screen.drawRectangle(384,0,511,255);
+        //do Screen.setColor(true);
+        //do Screen.drawRectangle(389,5,506,250);
+        //do Screen.setColor(false);
+        return;
+    }
+
+    function void drawQuad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
+        do Screen.drawLine(x1, y1, x2, y2);
+        do Screen.drawLine(x2, y2, x3, y3);
+        do Screen.drawLine(x3, y3, x4, y4);
+        do Screen.drawLine(x4, y4, x1, y1);
+        return;
+    }
+
+    function void drawCenter1() {
+        do Draw.drawQuad(19,42,364,42,364,214,19,214);
+        return;
+    }
+
+    function void drawCenter2() {
+        do Draw.drawQuad(134,99,249,99,249,156,134,156);
+        return;
+    }
+
+    function void drawCenter3() {
+        do Draw.drawQuad(157,111,226,111,226,144,157,144);
+        return;
+    }
+
+    function void drawCenter4() {
+        do Draw.drawQuad(167,116,216,116,216,139,167,139);
+        return;
+    }
+
+    function void drawCenter5() {
+        do Draw.drawQuad(173,118,210,118,210,137,173,137);
+        return;
+    }
+
+    function void drawLeft0() {
+        do Draw.drawQuad(0,32,18,41,18,214,0,223);
+        return;
+    }
+
+    function void drawLeft1In() {
+        do Draw.drawQuad(19,42,133,99,133,156,19,213);
+        return;
+    }
+
+    function void drawRight1In() {
+        do Draw.drawQuad(250,99,364,42,364,213,250,156);
+        return;
+    }
+
+    function void drawRight0() {
+        do Draw.drawQuad(365,41,383,32,383,223,365,214);
+        return;
+    }
+}

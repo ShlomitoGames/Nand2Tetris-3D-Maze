@@ -1,0 +1,47 @@
+class Matrix {
+  field int width;
+  field int height;
+  field Array cells;
+  constructor Matrix new(int aWidth, int aHeight){
+    let width = aWidth;
+    let height = aHeight;
+    let cells = Array.new(Math.multiply(aWidth, aHeight));
+    return this;
+  }
+
+  method void dispose(){
+    do cells.dispose();
+    do Memory.deAlloc(this);
+    return;
+  }
+
+  method int getWidth(){
+    return width;
+  }
+
+  method int getHeight(){
+    return height;
+  }
+
+  method int size(){
+    return Math.multiply(width, height);
+  }
+
+  method int getInt(int x, int y){
+    return cells[Math.multiply(y, width) + x];
+  }
+  
+  method void setInt(int x, int y, int value){
+    let cells[Math.multiply(y, width) + x] = value;
+    return;
+  }
+
+  method boolean getFlag(int x, int y){
+    return cells[Math.multiply(y, width) + x];
+  }
+  
+  method void setFlag(int x, int y, boolean value){
+    let cells[Math.multiply(y, width) + x] = value;
+    return;
+  }
+}

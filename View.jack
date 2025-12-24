@@ -1,0 +1,15 @@
+class View {
+    field Array viewBlocks;
+
+    constructor View new() {
+        let viewBlocks = Array.new(3);
+        let viewBlocks[0] = Array.new(6);
+        let viewBlocks[1] = Array.new(6);
+        let viewBlocks[2] = Array.new(6);
+
+        //let viewBlocks[1][1] = true;
+        return this;
+    }
+
+    //TODO Memory management
+}

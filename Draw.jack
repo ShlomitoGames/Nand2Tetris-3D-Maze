@@ -3,7 +3,7 @@ class Draw {
         do Screen.setColor(true);
         do Screen.drawRectangle(0, 0, 511, 255);
         do Screen.setColor(false);
-        do Screen.drawRectangle(384,0,511,255);
+        //do Screen.drawRectangle(384,0,511,255);
         //do Screen.setColor(true);
         //do Screen.drawRectangle(389,5,506,250);
         //do Screen.setColor(false);
@@ -19,47 +19,87 @@ class Draw {
     }
 
     function void drawCenter1() {
-        do Draw.drawQuad(19,42,364,42,364,214,19,214);
+        do Draw.drawQuad(83,42,428,42,428,213,83,213);
         return;
     }
 
     function void drawCenter2() {
-        do Draw.drawQuad(134,99,249,99,249,156,134,156);
+        do Draw.drawQuad(198,99,313,99,313,156,198,156);
         return;
     }
 
     function void drawCenter3() {
-        do Draw.drawQuad(157,111,226,111,226,144,157,144);
+        do Draw.drawQuad(221,111,290,111,290,144,221,144);
         return;
     }
 
     function void drawCenter4() {
-        do Draw.drawQuad(167,116,216,116,216,139,167,139);
+        do Draw.drawQuad(231,116,280,116,280,139,231,139);
         return;
     }
 
     function void drawCenter5() {
-        do Draw.drawQuad(173,118,210,118,210,137,173,137);
+        do Draw.drawQuad(237,118,274,118,274,137,237,137);
         return;
     }
 
     function void drawLeft0() {
-        do Draw.drawQuad(0,32,18,41,18,214,0,223);
+        do Draw.drawQuad(0,0,82,41,82,214,0,255);
         return;
     }
 
     function void drawLeft1In() {
-        do Draw.drawQuad(19,42,133,99,133,156,19,213);
+        do Draw.drawQuad(83,42,197,99,197,156,83,213);
         return;
     }
 
-    function void drawRight1In() {
-        do Draw.drawQuad(250,99,364,42,364,213,250,156);
+    function void drawLeft1Out() {
+        do Draw.drawQuad(0,42,82,42,82,213,0,213);
+        return;
+    }
+
+    function void drawLeft2In() {
+        do Draw.drawQuad(198,99,220,110,220,145,198,156);
+        return;
+    }
+
+    function void drawLeft2Out() {
+        do Draw.drawQuad(83,99,197,99,197,156,83,156);
+        return;
+    }
+
+    function void drawLeft3In() {
+        do Draw.drawQuad(221,111,230,115,230,140,221,144);
+        return;
+    }
+
+    function void drawLeft3Out() {
+        do Draw.drawQuad(197,111,220,111,220,144,197,144);
+        return;
+    }
+
+    function void drawLeft4In() {
+        do Draw.drawQuad(231,116,236,118,236,137,231,139);
+        return;
+    }
+
+    function void drawLeft4Out() {
+        do Draw.drawQuad(220,116,230,116,230,139,220,139);
+        return;
+    }
+
+    function void drawLeft5In() {
+        do Draw.drawQuad(236,118,239,120,239,134,236,136);
+        return;
+    }
+
+    function void drawLeft5Out() {
+        do Draw.drawQuad(230,118,236,118,236,137,230,137);
         return;
     }
 
     function void drawRight0() {
-        do Draw.drawQuad(365,41,383,32,383,223,365,214);
+        do Draw.drawQuad(511,0,429,41,429,214,511,255);
         return;
     }
 }

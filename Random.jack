@@ -1,0 +1,39 @@
+class Random {
+  field int seed;
+  constructor Random new(int aSeed) {
+    let seed = aSeed;
+    return this;
+  }
+  method int next() {
+    var int prevSeed;
+    var Random current;
+    let prevSeed = seed;
+    let seed = Math.multiply(seed, 453) + 455;
+    return prevSeed;
+  }
+
+  method int nextUInt() {
+    var int out;
+    var Random current;
+    let current = this;
+    let out = current.next();
+    if (out < 0) {
+      let out = out + -32767;
+    }
+    return out;
+  }
+
+  method void dispose() {
+    do Memory.deAlloc(this);
+    return;
+  }
+
+  method int randint(int mod) {
+    var int nextInt, next, diff;
+    var Random current;
+    let current = this;
+    let next = current.nextUInt();
+    let diff = Math.multiply(Math.divide(next, mod), mod);
+    return next - diff;
+  }
+}

@@ -16,12 +16,14 @@ class View {
         var int x;
         var int y;
         var int block;
+        var int width;
 
-        let y = viewBlocks.getHeight();
+        let y = 0;
+        let width = viewBlocks.getWidth();
 
-        while (y > -1) {
-            let x = 0;
-            while (x < viewBlocks.getWidth()) {
+        while (y < viewBlocks.getHeight()) {
+            let x = width;
+            while (x > -1) {
                 let block = viewBlocks.getInt(x, y);
                 if (x = 0) {
                     if (block = 1) {
@@ -63,7 +65,7 @@ class View {
                             }
                         }
                     }
-                    if (block = 1) {
+                    if (block = 1 & ~(viewBlocks.getInt(0,y) = 1)) {
                         if (y = 0) {
                             do Draw.drawLeft0();
                         }
@@ -84,9 +86,50 @@ class View {
                         }
                     }
                 }
-                let x = x + 1;
+                if (x = 2) {
+                    if (~(y = 0)) {
+                        if (viewBlocks.getInt(x, y - 1) = 0 & block = 1) {
+                            if (y = 1) {
+                                do Draw.drawRight1Out();
+                            }
+                            if (y = 2) {
+                                do Draw.drawRight2Out();
+                            }
+                            if (y = 3) {
+                                do Draw.drawRight3Out();
+                            }
+                            if (y = 4) {
+                                do Draw.drawRight4Out();
+                            }
+                            if (y = 5) {
+                                do Draw.drawRight5Out();
+                            }
+                        }
+                    }
+                    if (block = 1 & ~(viewBlocks.getInt(0,y) = 1)) {
+                        if (y = 0) {
+                            do Draw.drawRight0();
+                        }
+                        if (y = 1) {
+                            do Draw.drawRight1In();
+                        }
+                        if (y = 2) {
+                            do Draw.drawRight2In();
+                        }
+                        if (y = 3) {
+                            do Draw.drawRight3In();
+                        }
+                        if (y = 4) {
+                            do Draw.drawRight4In();
+                        }
+                        if (y = 5) {
+                            do Draw.drawRight5In();
+                        }
+                    }
+                }
+                let x = x - 1;
             }
-            let y = y - 1;
+            let y = y + 1;
         }
         return;
     }

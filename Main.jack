@@ -1,36 +1,9 @@
 class Main {
     function void main() {
+        var View view;
+        let view = View.new();
         do Draw.clearScreen();
-        do Draw.drawLeft0();
-        do Draw.drawLeft1In();
-        do Draw.drawLeft1Out();
-        do Draw.drawLeft2In();
-        do Draw.drawLeft2Out();
-        do Draw.drawLeft3In();
-        do Draw.drawLeft3Out();
-        do Draw.drawLeft4In();
-        do Draw.drawLeft4Out();
-        do Draw.drawLeft5In();
-        do Draw.drawLeft5Out();
-
-        do Draw.drawRight0();
-        do Draw.drawRight1In();
-        do Draw.drawRight1Out();
-        do Draw.drawRight2In();
-        do Draw.drawRight2Out();
-        do Draw.drawRight3In();
-        do Draw.drawRight3Out();
-        do Draw.drawRight4In();
-        do Draw.drawRight4Out();
-        do Draw.drawRight5In();
-        do Draw.drawRight5Out();
-
-        do Draw.drawCenter1();
-        do Draw.drawCenter2();
-        do Draw.drawCenter3();
-        do Draw.drawCenter4();
-        do Draw.drawCenter5();
-        //do Output.moveCursor(2,50);
+        do view.drawView();
         while (true) { }
         return;
     }

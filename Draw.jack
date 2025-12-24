@@ -59,7 +59,7 @@ class Draw {
     }
 
     function void drawLeft2In() {
-        do Draw.drawQuad(198,99,220,110,220,145,198,156);
+        do Draw.drawQuad(198,99,220,110,220,144,198,156);
         return;
     }
 
@@ -69,7 +69,7 @@ class Draw {
     }
 
     function void drawLeft3In() {
-        do Draw.drawQuad(221,111,230,115,230,140,221,144);
+        do Draw.drawQuad(221,111,230,115,230,139,221,144);
         return;
     }
 
@@ -79,7 +79,7 @@ class Draw {
     }
 
     function void drawLeft4In() {
-        do Draw.drawQuad(231,116,236,118,236,137,231,139);
+        do Draw.drawQuad(231,116,236,118,236,136,231,139);
         return;
     }
 
@@ -100,6 +100,56 @@ class Draw {
 
     function void drawRight0() {
         do Draw.drawQuad(511,0,429,41,429,214,511,255);
+        return;
+    }
+
+    function void drawRight1In() {
+        do Draw.drawQuad(314,99,428,42,428,213,314,156);
+        return;
+    }
+
+    function void drawRight1Out() {
+        do Draw.drawQuad(429,42,511,42,511,213,429,213);
+        return;
+    }
+
+    function void drawRight2In() {
+        do Draw.drawQuad(291,111,313,99,313,156,291,145);
+        return;
+    }
+
+    function void drawRight2Out() {
+        do Draw.drawQuad(314,99,428,99,428,156,314,156);
+        return;
+    }
+
+    function void drawRight3In() {
+        do Draw.drawQuad(281,116,290,111,290,144,281,140);
+        return;
+    }
+
+    function void drawRight3Out() {
+        do Draw.drawQuad(291,111,314,111,314,144,291,144);
+        return;
+    }
+
+    function void drawRight4In() {
+        do Draw.drawQuad(275,119,280,116,280,139,275,137);
+        return;
+    }
+
+    function void drawRight4Out() {
+        do Draw.drawQuad(281,116,291,116,291,139,281,139);
+        return;
+    }
+
+    function void drawRight5In() {
+        do Draw.drawQuad(272,121,275,119,275,137,272,135);
+        return;
+    }
+
+    function void drawRight5Out() {
+        do Draw.drawQuad(275,118,281,118,281,137,275,137);
         return;
     }
 }

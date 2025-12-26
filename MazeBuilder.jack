@@ -1,0 +1,282 @@
+class MazeBuilder {
+  // Sorting an array using insertion sort on the last index, assumes that 
+  // all items before it are sorted
+  function void insertionSortLast(Array data, int lastIndex){
+    var int i, temp;
+    if (lastIndex < 2){
+      return;
+    }
+    let i = 0;
+    while (i < lastIndex){
+      if (data[i] > data[lastIndex]){
+        let temp = data[i];
+        let data[i] = data[lastIndex];
+        let data[lastIndex] = temp;
+      }
+    }
+    return;
+  }
+  function Array generateRandomPosition(Random random, int aSize){
+    var Array positions;
+    var int index, index2, counter;
+    let positions = Array.new(5);
+    let index = 0;
+    while (index < 5){
+      let positions[index] = random.randint(aSize - index);
+    }
+    let index = 0;
+    let counter = 0;
+    while (index < 5){
+      let index2 = index - 1;
+      while ((index2 > 0) | (index2 = 0)){
+        if (positions[index] < positions[index2]){
+          let positions[index2] = positions[index2] + 1;
+        }
+        let index2 = index2 - 1;
+      }
+      do MazeBuilder.insertionSortLast(positions, index);
+    }
+    return positions;
+  }
+
+  function void placeCoins(Matrix maze, Random random) {
+    var Array positions;
+    var int x, y, coinIndex, cell, cellCount;
+    /// TOTAL NUMBER OF PLACES: 194
+    let positions = MazeBuilder.generateRandomPosition(maze, 194);
+    let y = 0;
+    let coinIndex = 0;
+    while (y < maze.getHeight()) {
+      let x = 0;
+      while (x < maze.getWidth()) { 
+        let cell = maze.getInt(x, y);
+        if (cell = 1) {
+          let cellCount = cellCount + 1;
+          if (cellCount = positions[coinIndex]) {
+            do maze.setInt(x, y, 4);
+            let coinIndex = coinIndex + 1;
+          }
+        }
+        let x = x + 1;
+      }
+      let y = y + 1;
+    }
+    return;
+  } 
+
+  function Matrix buildMaze(Random rng){
+    // Notes:
+    // startX = 30
+    // startY = 30
+    var Matrix mazeMat;
+    var Array postions;
+    var int apples, x, y;
+    let mazeMat = Matrix.new(30, 30);
+    while (y < 30){
+      let x = 0;
+      while (x < 30){
+        do mazeMat.setInt(0, 1, 1);
+      }
+    }
+    
+    /// TODO: Maybe reference counting.
+    do mazeMat.setInt(1, 1, 2);
+    do mazeMat.setInt(3, 1, 1);
+    do mazeMat.setInt(4, 1, 1);
+    do mazeMat.setInt(5, 1, 1);
+    do mazeMat.setInt(6, 1, 1);
+    do mazeMat.setInt(7, 1, 1);
+    do mazeMat.setInt(8, 1, 1);
+    do mazeMat.setInt(9, 1, 1);
+    do mazeMat.setInt(11, 1, 1);
+    do mazeMat.setInt(12, 1, 1);
+    do mazeMat.setInt(13, 1, 1);
+    do mazeMat.setInt(15, 1, 1);
+    do mazeMat.setInt(16, 1, 1);
+    do mazeMat.setInt(17, 1, 1);
+    do mazeMat.setInt(18, 1, 1);
+    do mazeMat.setInt(19, 1, 1);
+    do mazeMat.setInt(1, 2, 1);
+    do mazeMat.setInt(7, 2, 1);
+    do mazeMat.setInt(9, 2, 1);
+    do mazeMat.setInt(11, 2, 1);
+    do mazeMat.setInt(13, 2, 1);
+    do mazeMat.setInt(15, 2, 1);
+    do mazeMat.setInt(19, 2, 1);
+    do mazeMat.setInt(1, 3, 1);
+    do mazeMat.setInt(2, 3, 1);
+    do mazeMat.setInt(3, 3, 1);
+    do mazeMat.setInt(4, 3, 1);
+    do mazeMat.setInt(5, 3, 1);
+    do mazeMat.setInt(6, 3, 1);
+    do mazeMat.setInt(7, 3, 1);
+    do mazeMat.setInt(9, 3, 1);
+    do mazeMat.setInt(11, 3, 1);
+    do mazeMat.setInt(13, 3, 1);
+    do mazeMat.setInt(15, 3, 1);
+    do mazeMat.setInt(16, 3, 1);
+    do mazeMat.setInt(17, 3, 1);
+    do mazeMat.setInt(19, 3, 1);
+    do mazeMat.setInt(7, 4, 1);
+    do mazeMat.setInt(9, 4, 1);
+    do mazeMat.setInt(11, 4, 1);
+    do mazeMat.setInt(17, 4, 1);
+    do mazeMat.setInt(19, 4, 1);
+    do mazeMat.setInt(1, 5, 1);
+    do mazeMat.setInt(2, 5, 1);
+    do mazeMat.setInt(3, 5, 1);
+    do mazeMat.setInt(4, 5, 1);
+    do mazeMat.setInt(5, 5, 1);
+    do mazeMat.setInt(7, 5, 1);
+    do mazeMat.setInt(9, 5, 1);
+    do mazeMat.setInt(10, 5, 1);
+    do mazeMat.setInt(11, 5, 1);
+    do mazeMat.setInt(13, 5, 1);
+    do mazeMat.setInt(14, 5, 1);
+    do mazeMat.setInt(15, 5, 1);
+    do mazeMat.setInt(16, 5, 1);
+    do mazeMat.setInt(17, 5, 1);
+    do mazeMat.setInt(19, 5, 1);
+    do mazeMat.setInt(1, 6, 1);
+    do mazeMat.setInt(5, 6, 1);
+    do mazeMat.setInt(13, 6, 1);
+    do mazeMat.setInt(19, 6, 1);
+    do mazeMat.setInt(1, 7, 1);
+    do mazeMat.setInt(2, 7, 1);
+    do mazeMat.setInt(3, 7, 1);
+    do mazeMat.setInt(5, 7, 1);
+    do mazeMat.setInt(6, 7, 1);
+    do mazeMat.setInt(7, 7, 1);
+    do mazeMat.setInt(8, 7, 1);
+    do mazeMat.setInt(9, 7, 1);
+    do mazeMat.setInt(10, 7, 1);
+    do mazeMat.setInt(11, 7, 1);
+    do mazeMat.setInt(13, 7, 1);
+    do mazeMat.setInt(14, 7, 1);
+    do mazeMat.setInt(15, 7, 1);
+    do mazeMat.setInt(16, 7, 1);
+    do mazeMat.setInt(17, 7, 1);
+    do mazeMat.setInt(19, 7, 1);
+    do mazeMat.setInt(3, 8, 1);
+    do mazeMat.setInt(11, 8, 1);
+    do mazeMat.setInt(19, 8, 1);
+    do mazeMat.setInt(1, 9, 1);
+    do mazeMat.setInt(3, 9, 1);
+    do mazeMat.setInt(5, 9, 1);
+    do mazeMat.setInt(6, 9, 1);
+    do mazeMat.setInt(7, 9, 1);
+    do mazeMat.setInt(8, 9, 1);
+    do mazeMat.setInt(9, 9, 1);
+    do mazeMat.setInt(11, 9, 1);
+    do mazeMat.setInt(13, 9, 1);
+    do mazeMat.setInt(14, 9, 1);
+    do mazeMat.setInt(15, 9, 1);
+    do mazeMat.setInt(16, 9, 1);
+    do mazeMat.setInt(17, 9, 1);
+    do mazeMat.setInt(18, 9, 1);
+    do mazeMat.setInt(19, 9, 1);
+    do mazeMat.setInt(1, 10, 1);
+    do mazeMat.setInt(3, 10, 1);
+    do mazeMat.setInt(5, 10, 1);
+    do mazeMat.setInt(9, 10, 1);
+    do mazeMat.setInt(11, 10, 1);
+    do mazeMat.setInt(1, 11, 1);
+    do mazeMat.setInt(3, 11, 1);
+    do mazeMat.setInt(4, 11, 1);
+    do mazeMat.setInt(5, 11, 1);
+    do mazeMat.setInt(7, 11, 1);
+    do mazeMat.setInt(9, 11, 1);
+    do mazeMat.setInt(11, 11, 1);
+    do mazeMat.setInt(12, 11, 1);
+    do mazeMat.setInt(13, 11, 1);
+    do mazeMat.setInt(15, 11, 1);
+    do mazeMat.setInt(16, 11, 1);
+    do mazeMat.setInt(17, 11, 1);
+    do mazeMat.setInt(18, 11, 1);
+    do mazeMat.setInt(19, 11, 1);
+    do mazeMat.setInt(1, 12, 1);
+    do mazeMat.setInt(7, 12, 1);
+    do mazeMat.setInt(9, 12, 1);
+    do mazeMat.setInt(13, 12, 1);
+    do mazeMat.setInt(15, 12, 1);
+    do mazeMat.setInt(19, 12, 1);
+    do mazeMat.setInt(1, 13, 1);
+    do mazeMat.setInt(3, 13, 1);
+    do mazeMat.setInt(4, 13, 1);
+    do mazeMat.setInt(5, 13, 1);
+    do mazeMat.setInt(6, 13, 1);
+    do mazeMat.setInt(7, 13, 1);
+    do mazeMat.setInt(9, 13, 1);
+    do mazeMat.setInt(10, 13, 1);
+    do mazeMat.setInt(11, 13, 1);
+    do mazeMat.setInt(12, 13, 1);
+    do mazeMat.setInt(13, 13, 1);
+    do mazeMat.setInt(15, 13, 1);
+    do mazeMat.setInt(17, 13, 1);
+    do mazeMat.setInt(18, 13, 1);
+    do mazeMat.setInt(19, 13, 1);
+    do mazeMat.setInt(1, 14, 1);
+    do mazeMat.setInt(3, 14, 1);
+    do mazeMat.setInt(13, 14, 1);
+    do mazeMat.setInt(17, 14, 1);
+    do mazeMat.setInt(1, 15, 1);
+    do mazeMat.setInt(3, 15, 1);
+    do mazeMat.setInt(5, 15, 1);
+    do mazeMat.setInt(6, 15, 1);
+    do mazeMat.setInt(7, 15, 1);
+    do mazeMat.setInt(9, 15, 1);
+    do mazeMat.setInt(10, 15, 1);
+    do mazeMat.setInt(11, 15, 1);
+    do mazeMat.setInt(12, 15, 1);
+    do mazeMat.setInt(13, 15, 1);
+    do mazeMat.setInt(15, 15, 1);
+    do mazeMat.setInt(16, 15, 1);
+    do mazeMat.setInt(17, 15, 1);
+    do mazeMat.setInt(18, 15, 1);
+    do mazeMat.setInt(19, 15, 1);
+    do mazeMat.setInt(1, 16, 1);
+    do mazeMat.setInt(3, 16, 1);
+    do mazeMat.setInt(5, 16, 1);
+    do mazeMat.setInt(7, 16, 1);
+    do mazeMat.setInt(17, 16, 1);
+    do mazeMat.setInt(1, 17, 1);
+    do mazeMat.setInt(3, 17, 1);
+    do mazeMat.setInt(4, 17, 1);
+    do mazeMat.setInt(5, 17, 1);
+    do mazeMat.setInt(7, 17, 1);
+    do mazeMat.setInt(8, 17, 1);
+    do mazeMat.setInt(9, 17, 1);
+    do mazeMat.setInt(10, 17, 1);
+    do mazeMat.setInt(11, 17, 1);
+    do mazeMat.setInt(12, 17, 1);
+    do mazeMat.setInt(13, 17, 1);
+    do mazeMat.setInt(14, 17, 1);
+    do mazeMat.setInt(15, 17, 1);
+    do mazeMat.setInt(17, 17, 1);
+    do mazeMat.setInt(18, 17, 1);
+    do mazeMat.setInt(19, 17, 1);
+    do mazeMat.setInt(1, 18, 1);
+    do mazeMat.setInt(7, 18, 1);
+    do mazeMat.setInt(17, 18, 1);
+    do mazeMat.setInt(19, 18, 1);
+    do mazeMat.setInt(1, 19, 1);
+    do mazeMat.setInt(2, 19, 1);
+    do mazeMat.setInt(3, 19, 1);
+    do mazeMat.setInt(4, 19, 1);
+    do mazeMat.setInt(5, 19, 1);
+    do mazeMat.setInt(6, 19, 1);
+    do mazeMat.setInt(7, 19, 1);
+    do mazeMat.setInt(9, 19, 1);
+    do mazeMat.setInt(10, 19, 1);
+    do mazeMat.setInt(11, 19, 1);
+    do mazeMat.setInt(12, 19, 1);
+    do mazeMat.setInt(13, 19, 1);
+    do mazeMat.setInt(14, 19, 1);
+    do mazeMat.setInt(15, 19, 1);
+    do mazeMat.setInt(16, 19, 1);
+    do mazeMat.setInt(17, 19, 1);
+    do mazeMat.setInt(19, 19, 3);
+    do MazeBuilder.placeCoins(mazeMat, rng);
+    return mazeMat;
+  }
+}

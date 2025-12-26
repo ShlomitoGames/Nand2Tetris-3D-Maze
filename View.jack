@@ -1,17 +1,14 @@
 class View {
-    field Matrix viewBlocks;
+    field Matrix viewMatrix;
 
     constructor View new() {
-        let viewBlocks = Matrix.new(3,6);
-        do viewBlocks.setInt(0,5,1);
-        do viewBlocks.setInt(1,0,1);
-        do viewBlocks.setInt(1,1,1);
-        do viewBlocks.setInt(1,2,1);
-        do viewBlocks.setInt(1,4,1);
-        do viewBlocks.setInt(2,1,1);
-        do viewBlocks.setInt(2,3,1);
-        do viewBlocks.setInt(2,5,1);
+        let viewMatrix = Matrix.new(3,6);
         return this;
+    }
+
+    method void setView(Matrix view) {
+        let viewMatrix = view;
+        return;
     }
 
     method void drawView() {
@@ -25,7 +22,7 @@ class View {
         while (y < 6) {
             let x = 2;
             while (x > -1) {
-                let block = viewBlocks.getInt(x, y);
+                let block = viewMatrix.getInt(x, y);
                 if (x = 0) {
                     if (block = 1) {
                         if (y = 1) {
@@ -53,7 +50,7 @@ class View {
                 else {
                     //Render the Out Quad only if there is no block behind it
                     if (~(y = 0)) { //Needs 2 ifs because if y=0, getInt(x,y-1) might output weird stuff
-                        if ((block = 1) & (viewBlocks.getInt(x, y - 1) = 0)) {
+                        if ((block = 1) & (viewMatrix.getInt(x, y - 1) = 0)) {
                             if (y = 1) {
                                 if (x = 1) {
                                     //9 levels of nesting!!! yay!!!
@@ -98,7 +95,7 @@ class View {
                         }
                     }
                     //Render the In Quad only if there is no Center block in the same row
-                    if ((block = 1) & ~(viewBlocks.getInt(0, y) = 1)) {
+                    if ((block = 1) & ~(viewMatrix.getInt(0, y) = 1)) {
                         if (y = 0) {
                             if (x = 1) {
                                 do Draw.drawLeft0();

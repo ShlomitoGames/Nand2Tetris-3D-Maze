@@ -1,0 +1,71 @@
+class Board {
+    field Matrix maze;
+    field View view;
+    field int playerX;
+    field int playerY;
+
+    constructor Board new(Matrix _maze, int startX, int startY){
+        let maze = _maze;
+        let playerX = startX;
+        let playerY = startY;
+        let view = View.new();
+        return this;
+    }
+
+    //Moves the player by (x,y) blocks
+    //x and y cannot be outside the range [-1,1]
+    method void movePlayer(int x, int y) {
+        var int newPosX;
+        var int newPosY;
+        let newPosX = playerX + x;
+        let newPosY = playerY + y;
+        if ((newPosX = maze.getWidth()) | (newPosX < 0) |
+            (newPosY = maze.getHeight()) | (newPosY < 0) |
+            (maze.getInt(newPosX,newPosY) = 1)) {
+            return;
+        }
+        let playerX = newPosX;
+        let playerY = newPosY;
+        return;
+    }
+
+    method void updateView() {
+        var Matrix viewMatrix;
+        var int y;
+        var int value;
+        let viewMatrix = Matrix.new(3,6);
+        let y = 0;
+        while (y < 6) {
+            if ((playerY + y) > 5) {
+                let value = 0;
+            } else {
+                let value = maze.getInt(playerX, playerY + y);
+            }
+            do viewMatrix.setInt(0,y,value);
+            if ((playerY + y + 1) > maze.getHeight()) {
+                let value = 0;
+            } else {
+                if (playerX = 0) {
+                    let value = 0;
+                } else {
+                    let value = maze.getInt(playerX - 1, playerY + y);
+                }
+            }
+            do viewMatrix.setInt(1,y,value);
+            if ((playerY + y + 1) > maze.getHeight()) {
+                let value = 0;
+            } else {
+                if ((playerX + 1) = maze.getWidth()) {
+                    let value = 0;
+                } else {
+                    let value = maze.getInt(playerX + 1, playerY + y);
+                }
+            }
+            do viewMatrix.setInt(2,y,value);
+            let y = y + 1;
+        }
+        do view.setView(viewMatrix);
+        do view.drawView();
+        return;
+    }
+}

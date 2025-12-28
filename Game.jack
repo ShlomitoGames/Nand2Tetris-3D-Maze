@@ -39,6 +39,12 @@ class Game {
         if (key = 68) { //D
             do board.movePlayer(1,0);
         }
+        if (key = 81) { //Q
+            do board.rotatePlayer(false);
+        }
+        if (key = 69) { //E
+            do board.rotatePlayer(true);
+        }
 
         do board.updateView();
         return;

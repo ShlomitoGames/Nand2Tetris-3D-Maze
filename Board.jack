@@ -3,12 +3,14 @@ class Board {
     field View view;
     field int playerX;
     field int playerY;
+    field int viewRot;
 
     constructor Board new(Matrix _maze, int startX, int startY){
         let maze = _maze;
         let playerX = startX;
         let playerY = startY;
         let view = View.new();
+        let viewRot = 0;
         return this;
     }
 
@@ -46,58 +48,119 @@ class Board {
     //Moves the player by (x,y) blocks
     //x and y cannot be outside the range [-1,1]
     method void movePlayer(int x, int y) {
-        var int newPosX;
-        var int newPosY;
-        let newPosX = playerX + x;
-        let newPosY = playerY + y;
-        if ((newPosX = maze.getWidth()) | (newPosX < 0) |
-            (newPosY = maze.getHeight()) | (newPosY < 0) |
-            (maze.getInt(newPosX,newPosY) = 1)) {
+        var Array newPos;
+        let newPos = getViewCoords(x, y);
+
+        do Output.moveCursor(0,0);
+        do Output.printString("(");
+        do Output.printInt(newPos[0]);
+        do Output.printString(",");
+        do Output.printInt(newPos[1]);
+        do Output.printString(")");
+
+        if ((newPos[2] = false) |
+            (maze.getInt(newPos[0],newPos[1]) = 1)) {
             return;
         }
-        let playerX = newPosX;
-        let playerY = newPosY;
+        let playerX = newPos[0];
+        let playerY = newPos[1];
+        do newPos.dispose();
+        return;
+    }
+
+    method void rotatePlayer(boolean direction) {
+        var int value;
+        if (direction) {
+            let viewRot = viewRot + 1;
+            if (viewRot > 3) {
+                let viewRot = 0;
+            }
+        }
+        else {
+            let viewRot = viewRot - 1;
+            if (viewRot < 0) {
+                let viewRot = 3;
+            }
+        }
         return;
     }
 
     method void updateView() {
         var Matrix viewMatrix;
         var int y;
+        var Array coords;
         var int value;
-        let viewMatrix = Matrix.new(3,6);
+        let viewMatrix = Matrix.new(3, 6);
         let y = 0;
         while (y < 6) {
-            if ((playerY + y) > 5) {
-                let value = 0;
-            } else {
-                let value = maze.getInt(playerX, playerY + y);
+            let coords = getViewCoords(0, y);
+            let value = maze.getInt(coords[0], coords[1]);
+            if (coords[2] = false) {
+                let value = 1;
             }
-            do viewMatrix.setInt(0,y,value);
-            if ((playerY + y + 1) > maze.getHeight()) {
-                let value = 0;
-            } else {
-                if (playerX = 0) {
-                    let value = 0;
-                } else {
-                    let value = maze.getInt(playerX - 1, playerY + y);
-                }
+            do coords.dispose();
+            do viewMatrix.setInt(0, y, value);
+            
+            let coords = getViewCoords(-1, y);
+            let value = maze.getInt(coords[0], coords[1]);
+            if (coords[2] = false) {
+                let value = 1;
             }
-            do viewMatrix.setInt(1,y,value);
-            if ((playerY + y + 1) > maze.getHeight()) {
-                let value = 0;
-            } else {
-                if ((playerX + 1) = maze.getWidth()) {
-                    let value = 0;
-                } else {
-                    let value = maze.getInt(playerX + 1, playerY + y);
-                }
+            do coords.dispose();
+            do viewMatrix.setInt(1, y, value);
+
+            let coords = getViewCoords(1, y);
+            let value = maze.getInt(coords[0], coords[1]);
+            if (coords[2] = false) {
+                let value = 1;
             }
-            do viewMatrix.setInt(2,y,value);
+            do coords.dispose();
+            do viewMatrix.setInt(2, y, value);
+            
             let y = y + 1;
         }
         do view.setView(viewMatrix);
         do view.drawView();
         return;
+    }
+
+    method int getViewCoords(int x, int y) {
+        var int newX;
+        var int newY;
+        var int mazeW;
+        var int mazeH;
+        var boolean valid;
+        var Array res;
+
+        if (viewRot = 0) {
+            let newX = playerX + x;
+            let newY = playerY + y;
+        }
+        if (viewRot = 1) {
+            let newX = playerY - y;
+            let newY = x - playerX;
+        }
+        if (viewRot = 2) {
+            let newX = playerX - x;
+            let newY = playerY - y;
+        }
+        if (viewRot = 3) {
+            let newX = y - playerY;
+            let newY = playerX - x;
+        }
+
+        let mazeW = maze.getWidth();
+        let mazeH = maze.getHeight();
+        let valid = true;
+        if ((newX < 0) | (newX > (mazeW - 1)) |
+            (newY < 0) | (newY > (mazeH - 1))) {
+            let valid = false;
+        }
+        let res = Array.new(3);
+        let res[0] = newX;
+        let res[1] = newY;
+        let res[2] = valid;
+        return res;
     }
 
     method void dispose(){

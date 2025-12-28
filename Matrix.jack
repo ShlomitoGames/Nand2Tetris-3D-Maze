@@ -44,4 +44,8 @@ class Matrix {
     let cells[Math.multiply(y, width) + x] = value;
     return;
   }
+
+  method Array getBuffer() {
+    return cells;
+  }
 }

@@ -7,6 +7,7 @@ class View {
     }
 
     method void setView(Matrix view) {
+        do viewMatrix.dispose();
         let viewMatrix = view;
         return;
     }
@@ -153,5 +154,9 @@ class View {
         return;
     }
 
-    //TODO Memory management
+    method void dispose(){
+    do viewMatrix.dispose();
+    do Memory.deAlloc(this);
+    return;
+  }
 }

@@ -1,0 +1,54 @@
+class Game {
+    field int lastKey;
+    field Board board;
+
+    constructor Game new() {
+        let board = Board.new(null, 1, 1);
+        do board.createMaze();
+        do processKey(1);
+        return this;
+    }
+
+    method void gameLoop() {
+        var int key;
+        let key = Keyboard.keyPressed();
+        //W = 87, A = 65, S = 83, D = 68
+        //Q = 81, E = 69
+        if (~(key = lastKey)) {
+            let lastKey = key;
+            do processKey(key);
+        }
+
+        return;
+    }
+
+    method void processKey(int key) {
+        if (key = 0) {
+            return;
+        }
+        do Draw.clearScreen();
+        if (key = 87) { //W
+            do board.movePlayer(0,1);
+        }
+        if (key = 65) { //A
+            do board.movePlayer(-1,0);
+        }
+        if (key = 83) { //S
+            do board.movePlayer(0,-1);
+        }
+        if (key = 68) { //D
+            do board.movePlayer(1,0);
+        }
+
+        do board.updateView();
+        return;
+    }
+
+    function void wait() {
+        var int i;
+        while (i < 10000) {
+            let i = i + 1;
+        }
+        return;
+    }
+}

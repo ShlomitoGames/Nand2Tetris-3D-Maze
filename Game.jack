@@ -12,6 +12,10 @@ class Game {
     method void gameLoop() {
         var int key;
         let key = Keyboard.keyPressed();
+        
+        if (key > 96) { //To accept both uppercase and lowercase
+            let key = key - 32;
+        }
         //W = 87, A = 65, S = 83, D = 68
         //Q = 81, E = 69
         if (~(key = lastKey)) {

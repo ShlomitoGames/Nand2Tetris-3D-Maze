@@ -24,6 +24,8 @@ class Board {
         do maze.setInt(0,5,1);
         do maze.setInt(0,6,1);
         do maze.setInt(0,7,1);
+        do maze.setInt(0,8,1);
+        do maze.setInt(0,9,1);
 
         do maze.setInt(1,0,1);
         do maze.setInt(1,1,0);
@@ -33,6 +35,8 @@ class Board {
         do maze.setInt(1,5,0);
         do maze.setInt(1,6,0);
         do maze.setInt(1,7,0);
+        do maze.setInt(1,8,0);
+        do maze.setInt(1,9,1);
 
         do maze.setInt(2,0,1);
         do maze.setInt(2,1,1);
@@ -42,6 +46,85 @@ class Board {
         do maze.setInt(2,5,1);
         do maze.setInt(2,6,1);
         do maze.setInt(2,7,1);
+        do maze.setInt(2,8,0);
+        do maze.setInt(2,9,1);
+
+        do maze.setInt(3,0,1);
+        do maze.setInt(3,1,0);
+        do maze.setInt(3,2,0);
+        do maze.setInt(3,3,0);
+        do maze.setInt(3,4,0);
+        do maze.setInt(3,5,0);
+        do maze.setInt(3,6,0);
+        do maze.setInt(3,7,1);
+        do maze.setInt(3,8,0);
+        do maze.setInt(3,9,1);
+
+        do maze.setInt(4,0,1);
+        do maze.setInt(4,1,0);
+        do maze.setInt(4,2,1);
+        do maze.setInt(4,3,1);
+        do maze.setInt(4,4,1);
+        do maze.setInt(4,5,1);
+        do maze.setInt(4,6,0);
+        do maze.setInt(4,7,1);
+        do maze.setInt(4,8,0);
+        do maze.setInt(4,9,1);
+
+        do maze.setInt(5,0,1);
+        do maze.setInt(5,1,0);
+        do maze.setInt(5,2,0);
+        do maze.setInt(5,3,0);
+        do maze.setInt(5,4,0);
+        do maze.setInt(5,5,1);
+        do maze.setInt(5,6,0);
+        do maze.setInt(5,7,1);
+        do maze.setInt(5,8,0);
+        do maze.setInt(5,9,1);
+
+        do maze.setInt(6,0,1);
+        do maze.setInt(6,1,1);
+        do maze.setInt(6,2,1);
+        do maze.setInt(6,3,1);
+        do maze.setInt(6,4,0);
+        do maze.setInt(6,5,1);
+        do maze.setInt(6,6,0);
+        do maze.setInt(6,7,1);
+        do maze.setInt(6,8,0);
+        do maze.setInt(6,9,1);
+
+        do maze.setInt(7,0,1);
+        do maze.setInt(7,1,1);
+        do maze.setInt(7,2,0);
+        do maze.setInt(7,3,1);
+        do maze.setInt(7,4,0);
+        do maze.setInt(7,5,1);
+        do maze.setInt(7,6,1);
+        do maze.setInt(7,7,1);
+        do maze.setInt(7,8,1);
+        do maze.setInt(7,9,1);
+
+        do maze.setInt(8,0,1);
+        do maze.setInt(8,1,0);
+        do maze.setInt(8,2,0);
+        do maze.setInt(8,3,0);
+        do maze.setInt(8,4,0);
+        do maze.setInt(8,5,0);
+        do maze.setInt(8,6,0);
+        do maze.setInt(8,7,0);
+        do maze.setInt(8,8,0);
+        do maze.setInt(8,9,1);
+
+        do maze.setInt(9,0,1);
+        do maze.setInt(9,1,2);
+        do maze.setInt(9,2,1);
+        do maze.setInt(9,3,1);
+        do maze.setInt(9,4,1);
+        do maze.setInt(9,5,1);
+        do maze.setInt(9,6,1);
+        do maze.setInt(9,7,1);
+        do maze.setInt(9,8,1);
+        do maze.setInt(9,9,1);
         return;
     }
 

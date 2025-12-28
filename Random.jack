@@ -8,7 +8,7 @@ class Random {
     var int prevSeed;
     var Random current;
     let prevSeed = seed;
-    let seed = Math.multiply(seed, 453) + 455;
+    let seed = Math.multiply(seed, 455) + 453;
     return prevSeed;
   }
 

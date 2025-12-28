@@ -5,46 +5,15 @@ class Board {
     field int playerY;
     field int playerDir;
 
-    constructor Board new(Matrix _maze, int startX, int startY){
-        let maze = _maze;
+    constructor Board new(Matrix aMaze, int startX, int startY){
+        let maze = aMaze;
         let playerX = startX;
         let playerY = startY;
         let view = View.new();
         let playerDir = 0;
         return this;
     }
-
-    method void createMaze() {
-        let maze = Matrix.new(10,10);
-        do maze.setInt(0,0,1);
-        do maze.setInt(0,1,1);
-        do maze.setInt(0,2,1);
-        do maze.setInt(0,3,1);
-        do maze.setInt(0,4,1);
-        do maze.setInt(0,5,1);
-        do maze.setInt(0,6,1);
-        do maze.setInt(0,7,1);
-
-        do maze.setInt(1,0,1);
-        do maze.setInt(1,1,0);
-        do maze.setInt(1,2,0);
-        do maze.setInt(1,3,0);
-        do maze.setInt(1,4,0);
-        do maze.setInt(1,5,0);
-        do maze.setInt(1,6,0);
-        do maze.setInt(1,7,0);
-
-        do maze.setInt(2,0,1);
-        do maze.setInt(2,1,1);
-        do maze.setInt(2,2,1);
-        do maze.setInt(2,3,0);
-        do maze.setInt(2,4,1);
-        do maze.setInt(2,5,1);
-        do maze.setInt(2,6,1);
-        do maze.setInt(2,7,1);
-        return;
-    }
-
+    
     //Moves the player by (x,y) blocks
     //x and y cannot be outside the range [-1,1]
     method void movePlayer(int x, int y) {

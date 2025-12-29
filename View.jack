@@ -47,11 +47,28 @@ class View {
                         //That's why the array iterates backwards 
                         //checking the center last in each row
                     }
+                    if (block = 4) { //Drawing coins
+                        if (y = 1) {
+                            do Draw.drawCoin1();
+                        }
+                        if (y = 2) {
+                            do Draw.drawCoin2();
+                        }
+                        if (y = 3) {
+                            do Draw.drawCoin3();
+                        }
+                        if (y = 4) {
+                            do Draw.drawCoin4();
+                        }
+                        if (y = 5) {
+                            do Draw.drawCoin5();
+                        }
+                    }
                 }
                 else {
                     //Render the Out Quad only if there is no block behind it
                     if (~(y = 0)) { //Needs 2 ifs because if y=0, getInt(x,y-1) might output weird stuff
-                        if ((block = 1) & (viewMatrix.getInt(x, y - 1) = 0)) {
+                        if ((block = 1) & ~(viewMatrix.getInt(x, y - 1) = 1)) {
                             if (y = 1) {
                                 if (x = 1) {
                                     //9 levels of nesting!!! yay!!!
@@ -96,7 +113,7 @@ class View {
                         }
                     }
                     //Render the In Quad only if there is no Center block in the same row
-                    if ((block = 1) & (viewMatrix.getInt(0, y) = 0)) {
+                    if ((block = 1) & ~(viewMatrix.getInt(0, y) = 1)) {
                         if (y = 0) {
                             if (x = 1) {
                                 do Draw.drawLeft0();

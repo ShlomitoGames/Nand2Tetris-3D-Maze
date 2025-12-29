@@ -148,4 +148,49 @@ class Draw {
         do Draw.drawQuad(275,118,281,118,281,137,275,137);
         return;
     }
+
+    function void drawCoin1() {
+        do Screen.drawCircle(256, 128, 39);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 35);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 29);
+        return;
+    }
+
+    function void drawCoin2() {
+        do Screen.drawCircle(256, 128, 17);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 15);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 12);
+        return;
+    }
+
+    function void drawCoin3() {
+        do Screen.drawCircle(256, 128, 10);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 9);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 7);
+        return;
+    }
+
+    function void drawCoin4() {
+        do Screen.drawCircle(256, 128, 6);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 5);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 4);
+        return;
+    }
+
+    function void drawCoin5() {
+        do Screen.drawCircle(256, 128, 5);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 4);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 3);
+        return;
+    }
 }

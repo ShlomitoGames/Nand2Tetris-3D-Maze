@@ -27,19 +27,19 @@ class View {
                 if (x = 0) {
                     if (block = 1) {
                         if (y = 1) {
-                            do Draw.drawQuad(83,42,428,42,428,213,83,213);
+                            do Draw.drawCenter1();
                         }
                         if (y = 2) {
-                            do Draw.drawQuad(198,99,313,99,313,156,198,156);
+                            do Draw.drawCenter2();
                         }
                         if (y = 3) {
-                            do Draw.drawQuad(221,111,290,111,290,144,221,144);
+                            do Draw.drawCenter3();
                         }
                         if (y = 4) {
-                            do Draw.drawQuad(231,116,280,116,280,139,231,139);
+                            do Draw.drawCenter4();
                         }
                         if (y = 5) {
-                            do Draw.drawQuad(237,118,274,118,274,137,237,137);
+                            do Draw.drawCenter5();
                         }
                         //If there is a wall at the center,
                         //you won't be able to see anything behind it
@@ -49,19 +49,19 @@ class View {
                     }
                     if (block = 4) { //Drawing coins
                         if (y = 1) {
-                            do Screen.drawCircle(256, 128, 39);
+                            do Draw.drawCoin1();
                         }
                         if (y = 2) {
-                            do Screen.drawCircle(256, 128, 17);
+                            do Draw.drawCoin2();
                         }
                         if (y = 3) {
-                            do Screen.drawCircle(256, 128, 10);
+                            do Draw.drawCoin3();
                         }
                         if (y = 4) {
-                            do Screen.drawCircle(256, 128, 6);
+                            do Draw.drawCoin4();
                         }
                         if (y = 5) {
-                            do Screen.drawCircle(256, 128, 5);
+                            do Draw.drawCoin5();
                         }
                     }
                 }
@@ -72,42 +72,42 @@ class View {
                             if (y = 1) {
                                 if (x = 1) {
                                     //9 levels of nesting!!! yay!!!
-                                    do Draw.drawQuad(0,42,82,42,82,213,0,213);
+                                    do Draw.drawLeft1Out();
                                 }
                                 else {
-                                    do Draw.drawQuad(429,42,511,42,511,213,429,213);
+                                    do Draw.drawRight1Out();
                                 }
                             }
                             if (y = 2) {
                                 if (x = 1) {
-                                    do Draw.drawQuad(83,99,197,99,197,156,83,156);
+                                    do Draw.drawLeft2Out();
                                 }
                                 else {
-                                    do Draw.drawQuad(314,99,428,99,428,156,314,156);
+                                    do Draw.drawRight2Out();
                                 }
                             }
                             if (y = 3) {
                                 if (x = 1) {
-                                    do Draw.drawQuad(197,111,220,111,220,144,197,144);
+                                    do Draw.drawLeft3Out();
                                 }
                                 else {
-                                    do Draw.drawQuad(291,111,314,111,314,144,291,144);
+                                    do Draw.drawRight3Out();
                                 }
                             }
                             if (y = 4) {
                                 if (x = 1) {
-                                    do Draw.drawQuad(220,116,230,116,230,139,220,139);
+                                    do Draw.drawLeft4Out();
                                 }
                                 else {
-                                    do Draw.drawQuad(281,116,291,116,291,139,281,139);
+                                    do Draw.drawRight4Out();
                                 }
                             }
                             if (y = 5) {
                                 if (x = 1) {
-                                    do Draw.drawQuad(230,118,236,118,236,137,230,137);
+                                    do Draw.drawLeft5Out();
                                 }
                                 else {
-                                    do Draw.drawQuad(275,118,281,118,281,137,275,137);
+                                    do Draw.drawRight5Out();
                                 }
                             }
                         }
@@ -116,50 +116,50 @@ class View {
                     if ((block = 1) & ~(viewMatrix.getInt(0, y) = 1)) {
                         if (y = 0) {
                             if (x = 1) {
-                                do Draw.drawQuad(0,0,82,41,82,214,0,255);
+                                do Draw.drawLeft0();
                             }
                             else {
-                                do Draw.drawQuad(511,0,429,41,429,214,511,255);
+                                do Draw.drawRight0();
                             }
                         }
                         if (y = 1) {
                             if (x = 1) {
-                                do Draw.drawQuad(83,42,197,99,197,156,83,213);
+                                do Draw.drawLeft1In();
                             }
                             else {
-                                do Draw.drawQuad(314,99,428,42,428,213,314,156);
+                                do Draw.drawRight1In();
                             }
                         }
                         if (y = 2) {
                             if (x = 1) {
-                                do Draw.drawQuad(198,99,220,110,220,144,198,156);
+                                do Draw.drawLeft2In();
                             }
                             else {
-                                do Draw.drawQuad(291,111,313,99,313,156,291,145);
+                                do Draw.drawRight2In();
                             }
                         }
                         if (y = 3) {
                             if (x = 1) {
-                                do Draw.drawQuad(221,111,230,115,230,139,221,144);
+                                do Draw.drawLeft3In();
                             }
                             else {
-                                do Draw.drawQuad(281,116,290,111,290,144,281,140);
+                                do Draw.drawRight3In();
                             }
                         }
                         if (y = 4) {
                             if (x = 1) {
-                                do Draw.drawQuad(231,116,236,118,236,136,231,139);
+                                do Draw.drawLeft4In();
                             }
                             else {
-                                do Draw.drawQuad(275,119,280,116,280,139,275,137);
+                                do Draw.drawRight4In();
                             }
                         }
                         if (y = 5) {
                             if (x = 1) {
-                                do Draw.drawQuad(236,118,239,120,239,134,236,136);
+                                do Draw.drawLeft5In();
                             }
                             else {
-                                do Draw.drawQuad(272,121,275,119,275,137,272,135);
+                                do Draw.drawRight5In();
                             }
                         }
                     }

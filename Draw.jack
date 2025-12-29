@@ -13,4 +13,184 @@ class Draw {
         do Screen.drawLine(x4, y4, x1, y1);
         return;
     }
+
+    function void drawCenter1() {
+        do Draw.drawQuad(83,42,428,42,428,213,83,213);
+        return;
+    }
+
+    function void drawCenter2() {
+        do Draw.drawQuad(198,99,313,99,313,156,198,156);
+        return;
+    }
+
+    function void drawCenter3() {
+        do Draw.drawQuad(221,111,290,111,290,144,221,144);
+        return;
+    }
+
+    function void drawCenter4() {
+        do Draw.drawQuad(231,116,280,116,280,139,231,139);
+        return;
+    }
+
+    function void drawCenter5() {
+        do Draw.drawQuad(237,118,274,118,274,137,237,137);
+        return;
+    }
+
+    function void drawLeft0() {
+        do Draw.drawQuad(0,0,82,41,82,214,0,255);
+        return;
+    }
+
+    function void drawLeft1In() {
+        do Draw.drawQuad(83,42,197,99,197,156,83,213);
+        return;
+    }
+
+    function void drawLeft1Out() {
+        do Draw.drawQuad(0,42,82,42,82,213,0,213);
+        return;
+    }
+
+    function void drawLeft2In() {
+        do Draw.drawQuad(198,99,220,110,220,144,198,156);
+        return;
+    }
+
+    function void drawLeft2Out() {
+        do Draw.drawQuad(83,99,197,99,197,156,83,156);
+        return;
+    }
+
+    function void drawLeft3In() {
+        do Draw.drawQuad(221,111,230,115,230,139,221,144);
+        return;
+    }
+
+    function void drawLeft3Out() {
+        do Draw.drawQuad(197,111,220,111,220,144,197,144);
+        return;
+    }
+
+    function void drawLeft4In() {
+        do Draw.drawQuad(231,116,236,118,236,136,231,139);
+        return;
+    }
+
+    function void drawLeft4Out() {
+        do Draw.drawQuad(220,116,230,116,230,139,220,139);
+        return;
+    }
+
+    function void drawLeft5In() {
+        do Draw.drawQuad(236,118,239,120,239,134,236,136);
+        return;
+    }
+
+    function void drawLeft5Out() {
+        do Draw.drawQuad(230,118,236,118,236,137,230,137);
+        return;
+    }
+
+    function void drawRight0() {
+        do Draw.drawQuad(511,0,429,41,429,214,511,255);
+        return;
+    }
+
+    function void drawRight1In() {
+        do Draw.drawQuad(314,99,428,42,428,213,314,156);
+        return;
+    }
+
+    function void drawRight1Out() {
+        do Draw.drawQuad(429,42,511,42,511,213,429,213);
+        return;
+    }
+
+    function void drawRight2In() {
+        do Draw.drawQuad(291,111,313,99,313,156,291,145);
+        return;
+    }
+
+    function void drawRight2Out() {
+        do Draw.drawQuad(314,99,428,99,428,156,314,156);
+        return;
+    }
+
+    function void drawRight3In() {
+        do Draw.drawQuad(281,116,290,111,290,144,281,140);
+        return;
+    }
+
+    function void drawRight3Out() {
+        do Draw.drawQuad(291,111,314,111,314,144,291,144);
+        return;
+    }
+
+    function void drawRight4In() {
+        do Draw.drawQuad(275,119,280,116,280,139,275,137);
+        return;
+    }
+
+    function void drawRight4Out() {
+        do Draw.drawQuad(281,116,291,116,291,139,281,139);
+        return;
+    }
+
+    function void drawRight5In() {
+        do Draw.drawQuad(272,121,275,119,275,137,272,135);
+        return;
+    }
+
+    function void drawRight5Out() {
+        do Draw.drawQuad(275,118,281,118,281,137,275,137);
+        return;
+    }
+
+    function void drawCoin1() {
+        do Screen.drawCircle(256, 128, 39);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 35);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 29);
+        return;
+    }
+
+    function void drawCoin2() {
+        do Screen.drawCircle(256, 128, 17);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 15);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 12);
+        return;
+    }
+
+    function void drawCoin3() {
+        do Screen.drawCircle(256, 128, 10);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 9);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 7);
+        return;
+    }
+
+    function void drawCoin4() {
+        do Screen.drawCircle(256, 128, 6);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 5);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 4);
+        return;
+    }
+
+    function void drawCoin5() {
+        do Screen.drawCircle(256, 128, 5);
+        do Screen.setColor(true);
+        do Screen.drawCircle(256, 128, 4);
+        do Screen.setColor(false);
+        do Screen.drawCircle(256, 128, 3);
+        return;
+    }
 }

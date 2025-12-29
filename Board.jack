@@ -116,7 +116,7 @@ class Board {
         do maze.setInt(8,9,1);
 
         do maze.setInt(9,0,1);
-        do maze.setInt(9,1,2);
+        do maze.setInt(9,1,0);
         do maze.setInt(9,2,1);
         do maze.setInt(9,3,1);
         do maze.setInt(9,4,1);
@@ -150,7 +150,9 @@ class Board {
             let newPosY = playerY + x;
         }
 
-        if (maze.getInt(newPosX,newPosY) = 1) {
+        if ((newPosX < 0) | (newPosX > (maze.getWidth() - 1)) | 
+            (newPosY < 0) | (newPosY > (maze.getHeight() - 1)) |
+            (maze.getInt(newPosX,newPosY) = 1)) {
             return;
         }
         
@@ -231,7 +233,7 @@ class Board {
         let mazeW = maze.getWidth();
         let mazeH = maze.getHeight();
         if ((newX < 0) | (newX > (mazeW - 1)) | (newY < 0) | (newY > (mazeH - 1))) {
-            return 0;
+            return 1;
         }
         return maze.getInt(newX,newY);
     }

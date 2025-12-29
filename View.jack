@@ -96,7 +96,7 @@ class View {
                         }
                     }
                     //Render the In Quad only if there is no Center block in the same row
-                    if ((block = 1) & ~(viewMatrix.getInt(0, y) = 1)) {
+                    if ((block = 1) & (viewMatrix.getInt(0, y) = 0)) {
                         if (y = 0) {
                             if (x = 1) {
                                 do Draw.drawLeft0();
@@ -154,9 +154,9 @@ class View {
         return;
     }
 
-    method void dispose(){
-    do viewMatrix.dispose();
-    do Memory.deAlloc(this);
-    return;
-  }
+    method void dispose() {
+        do viewMatrix.dispose();
+        do Memory.deAlloc(this);
+        return;
+    }
 }

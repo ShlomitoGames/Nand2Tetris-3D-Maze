@@ -27,19 +27,19 @@ class View {
                 if (x = 0) {
                     if (block = 1) {
                         if (y = 1) {
-                            do View.drawQuad(83,42,428,42,428,213,83,213);
+                            do Draw.drawQuad(83,42,428,42,428,213,83,213);
                         }
                         if (y = 2) {
-                            do View.drawQuad(198,99,313,99,313,156,198,156);
+                            do Draw.drawQuad(198,99,313,99,313,156,198,156);
                         }
                         if (y = 3) {
-                            do View.drawQuad(221,111,290,111,290,144,221,144);
+                            do Draw.drawQuad(221,111,290,111,290,144,221,144);
                         }
                         if (y = 4) {
-                            do View.drawQuad(231,116,280,116,280,139,231,139);
+                            do Draw.drawQuad(231,116,280,116,280,139,231,139);
                         }
                         if (y = 5) {
-                            do View.drawQuad(237,118,274,118,274,137,237,137);
+                            do Draw.drawQuad(237,118,274,118,274,137,237,137);
                         }
                         //If there is a wall at the center,
                         //you won't be able to see anything behind it
@@ -72,42 +72,42 @@ class View {
                             if (y = 1) {
                                 if (x = 1) {
                                     //9 levels of nesting!!! yay!!!
-                                    do View.drawQuad(0,42,82,42,82,213,0,213);
+                                    do Draw.drawQuad(0,42,82,42,82,213,0,213);
                                 }
                                 else {
-                                    do View.drawQuad(429,42,511,42,511,213,429,213);
+                                    do Draw.drawQuad(429,42,511,42,511,213,429,213);
                                 }
                             }
                             if (y = 2) {
                                 if (x = 1) {
-                                    do View.drawQuad(83,99,197,99,197,156,83,156);
+                                    do Draw.drawQuad(83,99,197,99,197,156,83,156);
                                 }
                                 else {
-                                    do View.drawQuad(314,99,428,99,428,156,314,156);
+                                    do Draw.drawQuad(314,99,428,99,428,156,314,156);
                                 }
                             }
                             if (y = 3) {
                                 if (x = 1) {
-                                    do View.drawQuad(197,111,220,111,220,144,197,144);
+                                    do Draw.drawQuad(197,111,220,111,220,144,197,144);
                                 }
                                 else {
-                                    do View.drawQuad(291,111,314,111,314,144,291,144);
+                                    do Draw.drawQuad(291,111,314,111,314,144,291,144);
                                 }
                             }
                             if (y = 4) {
                                 if (x = 1) {
-                                    do View.drawQuad(220,116,230,116,230,139,220,139);
+                                    do Draw.drawQuad(220,116,230,116,230,139,220,139);
                                 }
                                 else {
-                                    do View.drawQuad(281,116,291,116,291,139,281,139);
+                                    do Draw.drawQuad(281,116,291,116,291,139,281,139);
                                 }
                             }
                             if (y = 5) {
                                 if (x = 1) {
-                                    do View.drawQuad(230,118,236,118,236,137,230,137);
+                                    do Draw.drawQuad(230,118,236,118,236,137,230,137);
                                 }
                                 else {
-                                    do View.drawQuad(275,118,281,118,281,137,275,137);
+                                    do Draw.drawQuad(275,118,281,118,281,137,275,137);
                                 }
                             }
                         }
@@ -116,50 +116,50 @@ class View {
                     if ((block = 1) & ~(viewMatrix.getInt(0, y) = 1)) {
                         if (y = 0) {
                             if (x = 1) {
-                                do View.drawQuad(0,0,82,41,82,214,0,255);
+                                do Draw.drawQuad(0,0,82,41,82,214,0,255);
                             }
                             else {
-                                do View.drawQuad(511,0,429,41,429,214,511,255);
+                                do Draw.drawQuad(511,0,429,41,429,214,511,255);
                             }
                         }
                         if (y = 1) {
                             if (x = 1) {
-                                do View.drawQuad(83,42,197,99,197,156,83,213);
+                                do Draw.drawQuad(83,42,197,99,197,156,83,213);
                             }
                             else {
-                                do View.drawQuad(314,99,428,42,428,213,314,156);
+                                do Draw.drawQuad(314,99,428,42,428,213,314,156);
                             }
                         }
                         if (y = 2) {
                             if (x = 1) {
-                                do View.drawQuad(198,99,220,110,220,144,198,156);
+                                do Draw.drawQuad(198,99,220,110,220,144,198,156);
                             }
                             else {
-                                do View.drawQuad(291,111,313,99,313,156,291,145);
+                                do Draw.drawQuad(291,111,313,99,313,156,291,145);
                             }
                         }
                         if (y = 3) {
                             if (x = 1) {
-                                do View.drawQuad(221,111,230,115,230,139,221,144);
+                                do Draw.drawQuad(221,111,230,115,230,139,221,144);
                             }
                             else {
-                                do View.drawQuad(281,116,290,111,290,144,281,140);
+                                do Draw.drawQuad(281,116,290,111,290,144,281,140);
                             }
                         }
                         if (y = 4) {
                             if (x = 1) {
-                                do View.drawQuad(231,116,236,118,236,136,231,139);
+                                do Draw.drawQuad(231,116,236,118,236,136,231,139);
                             }
                             else {
-                                do View.drawQuad(275,119,280,116,280,139,275,137);
+                                do Draw.drawQuad(275,119,280,116,280,139,275,137);
                             }
                         }
                         if (y = 5) {
                             if (x = 1) {
-                                do View.drawQuad(236,118,239,120,239,134,236,136);
+                                do Draw.drawQuad(236,118,239,120,239,134,236,136);
                             }
                             else {
-                                do View.drawQuad(272,121,275,119,275,137,272,135);
+                                do Draw.drawQuad(272,121,275,119,275,137,272,135);
                             }
                         }
                     }
@@ -168,21 +168,6 @@ class View {
             }
             let y = y + 1;
         }
-        return;
-    }
-
-    function void clearScreen() {
-        do Screen.setColor(true);
-        do Screen.drawRectangle(0, 0, 511, 255);
-        do Screen.setColor(false);
-        return;
-    }
-
-    function void drawQuad(int x1, int y1, int x2, int y2, int x3, int y3, int x4, int y4) {
-        do Screen.drawLine(x1, y1, x2, y2);
-        do Screen.drawLine(x2, y2, x3, y3);
-        do Screen.drawLine(x3, y3, x4, y4);
-        do Screen.drawLine(x4, y4, x1, y1);
         return;
     }
 

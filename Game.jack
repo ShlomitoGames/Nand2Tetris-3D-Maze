@@ -30,7 +30,7 @@ class Game {
         if (key = 0) {
             return;
         }
-        do View.clearScreen();
+        do Draw.clearScreen();
         if (key = 87) { //W
             do board.movePlayer(0,1);
         }

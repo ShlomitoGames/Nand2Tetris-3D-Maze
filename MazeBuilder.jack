@@ -55,7 +55,7 @@ class MazeBuilder {
 
   function void placeCoins(Matrix maze, Random random) {
     var Array positions, mazeBuff;
-    var int idx, coinIndex, cell, cellCount, mazeSize, count, emptyCounter;
+    var int idx, coinIndex, cell, cellCount, mazeSize, emptyCounter;
     let mazeBuff = maze.getBuffer();
     let mazeSize = maze.size();
     let emptyCounter = MazeBuilder.countEmptyCells(maze);
@@ -73,6 +73,7 @@ class MazeBuilder {
         }
         let idx = idx + 1;
     }
+    do positions.dispose();
     return;
   } 
 

@@ -7,7 +7,7 @@ class Game {
         var Random random;
         let random = Random.new(10);
         let maze = MazeBuilder.buildMaze(random); 
-        let board = Board.new(null, 1, 1);
+        let board = Board.new(maze, 0, 0);
         do processKey(1);
         return this;
     }

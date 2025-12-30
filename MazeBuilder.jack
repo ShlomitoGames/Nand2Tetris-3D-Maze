@@ -63,8 +63,6 @@ class MazeBuilder {
 
   function Matrix buildMaze(Random rng){
     // Notes:
-    // startX = 30
-    // startY = 30
     var Matrix mazeMat;
     var Array postions, mazeBuffer;
     var int apples, x, y, cellIdx;
@@ -72,7 +70,7 @@ class MazeBuilder {
     let mazeBuffer = mazeMat.getBuffer();
 
     
-    /// TODO: Maybe reference counting.
+    /// Start point:
     let mazeBuffer[0] = 2;
     let mazeBuffer[1] = 1;
     let mazeBuffer[2] = 0;
@@ -172,6 +170,7 @@ class MazeBuilder {
     let mazeBuffer[96] = 0;
     let mazeBuffer[97] = 0;
     let mazeBuffer[98] = 1;
+    // End point
     let mazeBuffer[99] = 3;
     do MazeBuilder.placeCoins(mazeMat, rng);
     return mazeMat;

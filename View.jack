@@ -64,6 +64,23 @@ class View {
                             do Draw.drawCoin5();
                         }
                     }
+                    if (block = 3) { //Drawing goal
+                        if (y = 1) {
+                            do Draw.drawGoal(15);
+                        }
+                        if (y = 2) {
+                            do Draw.drawGoal(6);
+                        }
+                        if (y = 3) {
+                            do Draw.drawGoal(4);
+                        }
+                        if (y = 4) {
+                            do Draw.drawGoal(3);
+                        }
+                        if (y = 5) {
+                            do Draw.drawGoal(2);
+                        }
+                    }
                 }
                 else {
                     //Render the Out Quad only if there is no block behind it

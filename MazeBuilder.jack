@@ -55,16 +55,14 @@ class MazeBuilder {
 
   function void placeCoins(Matrix maze, Random random) {
     var Array positions, mazeBuff;
-    var int idx, coinIndex, cell, cellCount, mazeSize, count, size, emptyCounter;
+    var int idx, coinIndex, cell, cellCount, mazeSize, count, emptyCounter;
     let mazeBuff = maze.getBuffer();
-    let size = maze.size();
+    let mazeSize = maze.size();
     let emptyCounter = MazeBuilder.countEmptyCells(maze);
-    /// TOTAL NUMBER OF PLACES: 194
-    let positions = MazeBuilder.generateRandomPositions(random, 51);
+    let positions = MazeBuilder.generateRandomPositions(random, emptyCounter);
     let idx = 0;
     let coinIndex = 0;
-    let mazeSize = Math.multiply(maze.getWidth(), maze.getHeight());
-    while ((idx < 100) & (coinIndex < 5)) {
+    while ((idx < mazeSize) & (coinIndex < 5)) {
         let cell = mazeBuff[idx];
         if (cell = 1) {
           let cellCount = cellCount + 1;

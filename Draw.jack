@@ -193,4 +193,29 @@ class Draw {
         do Screen.drawCircle(256, 128, 3);
         return;
     }
+
+    function void drawEnd1() {
+        do Screen.drawCircle(256, 128, 39);
+        return;
+    }
+
+    function void drawEnd2() {
+        do Screen.drawCircle(256, 128, 17);
+        return;
+    }
+
+    function void drawEnd3() {
+        do Screen.drawCircle(256, 128, 10);
+        return;
+    }
+
+    function void drawEnd4() {
+        do Screen.drawCircle(256, 128, 6);
+        return;
+    }
+
+    function void drawEnd5() {
+        do Screen.drawCircle(256, 128, 5);
+        return;
+    }
 }

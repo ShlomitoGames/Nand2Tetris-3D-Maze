@@ -64,6 +64,23 @@ class View {
                             do Draw.drawCoin5();
                         }
                     }
+                    if (block = 3) { //Drawing End
+                        if (y = 1) {
+                            do Draw.drawEnd1();
+                        }
+                        if (y = 2) {
+                            do Draw.drawEnd2();
+                        }
+                        if (y = 3) {
+                            do Draw.drawEnd3();
+                        }
+                        if (y = 4) {
+                            do Draw.drawEnd4();
+                        }
+                        if (y = 5) {
+                            do Draw.drawEnd5();
+                        }
+                    }
                 }
                 else {
                     //Render the Out Quad only if there is no block behind it

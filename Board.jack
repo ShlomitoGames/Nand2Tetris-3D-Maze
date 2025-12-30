@@ -5,20 +5,15 @@ class Board {
     field int playerY;
     field int playerDir;
 
-    constructor Board new(Matrix _maze, int startX, int startY){
-        let maze = _maze;
+    constructor Board new(Matrix aMaze, int startX, int startY){
+        let maze = aMaze;
         let playerX = startX;
         let playerY = startY;
         let view = View.new();
         let playerDir = 0;
         return this;
     }
-
-    method void createMaze() {
-        let maze = MazeBuilder.buildMaze(34);
-        return;
-    }
-
+    
     //Moves the player by (x,y) blocks
     //x and y cannot be outside the range [-1,1]
     method void movePlayer(int x, int y) {

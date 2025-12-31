@@ -4,7 +4,10 @@ class Game {
 
     constructor Game new(int seed) {
         var Matrix maze;
-        let maze = MazeBuilder.buildMaze(Random.new(seed)); 
+        var Random random;
+        let random = Random.new(seed);
+        let maze = MazeBuilder.buildMaze(random); 
+        do random.dispose();
         let board = Board.new(maze, 0, 0);
         do processKey(1);
         return this;

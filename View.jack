@@ -64,21 +64,21 @@ class View {
                             do Draw.drawCoin5();
                         }
                     }
-                    if (block = 3) { //Drawing End
+                    if (block = 3) { //Drawing goal
                         if (y = 1) {
-                            do Draw.drawEnd1();
+                            do Draw.drawGoal(15);
                         }
                         if (y = 2) {
-                            do Draw.drawEnd2();
+                            do Draw.drawGoal(6);
                         }
                         if (y = 3) {
-                            do Draw.drawEnd3();
+                            do Draw.drawGoal(4);
                         }
                         if (y = 4) {
-                            do Draw.drawEnd4();
+                            do Draw.drawGoal(3);
                         }
                         if (y = 5) {
-                            do Draw.drawEnd5();
+                            do Draw.drawGoal(2);
                         }
                     }
                 }

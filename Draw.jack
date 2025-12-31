@@ -194,28 +194,16 @@ class Draw {
         return;
     }
 
-    function void drawEnd1() {
-        do Screen.drawCircle(256, 128, 39);
-        return;
-    }
-
-    function void drawEnd2() {
-        do Screen.drawCircle(256, 128, 17);
-        return;
-    }
-
-    function void drawEnd3() {
-        do Screen.drawCircle(256, 128, 10);
-        return;
-    }
-
-    function void drawEnd4() {
-        do Screen.drawCircle(256, 128, 6);
-        return;
-    }
-
-    function void drawEnd5() {
-        do Screen.drawCircle(256, 128, 5);
+    function void drawGoal(int size) {
+        do Screen.drawRectangle(256-(5*size),128-(3*size),256-(3*size),128-size);
+        do Screen.drawRectangle(256-(5*size),128+size,256-(3*size),128+(3*size));
+        do Screen.drawRectangle(256-(3*size),128-size,256-size,128+size);
+        do Screen.drawRectangle(256-size,128-(3*size),256+size,128-size);
+        do Screen.drawRectangle(256-size,128+size,256+size,128+(3*size));
+        do Screen.drawRectangle(256+size,128-size,256+(3*size),128+size);
+        do Screen.drawRectangle(256+(3*size),128-(3*size),256+(5*size),128-size);
+        do Screen.drawRectangle(256+(3*size),128+size,256+(5*size),128+(3*size));
+        do Draw.drawQuad(256-(5*size),128-(3*size),256+(5*size),128-(3*size),256+(5*size),128+(3*size),256-(5*size),128+(3*size));
         return;
     }
 }

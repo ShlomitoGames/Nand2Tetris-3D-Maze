@@ -2,10 +2,30 @@ class Main {
 
     function void main() {
         var Game game;
-
-        let game = Game.new();
+        var int key;
         while (true) {
-            do game.gameLoop();
+            while (~(Keyboard.keyPressed() = 0)) {}
+            do Screen.setColor(false);
+            do Screen.drawRectangle(0, 0, 511, 255);
+
+            do Output.moveCursor(5, 25);
+            do Output.printString("The Jack Maze");
+            do Output.moveCursor(8, 13);
+            do Output.printString("Find all 5 coins and escape this maze.");
+
+            do Output.moveCursor(14, 27);
+            do Output.printString("Controls:");
+            do Output.moveCursor(16, 18);
+            do Output.printString("[WASD] Move   [QE] Rotate");
+
+            do Output.moveCursor(20, 20);
+            do Output.printString("Press any key to begin.");
+            while (Keyboard.keyPressed() = 0) {}
+            let key = Keyboard.keyPressed();
+            let game = Game.new(key);
+            while (~(Keyboard.keyPressed() = 0)) {}
+            while (game.gameLoop()) {}
+            do game.dispose();
         }
         return;
     }

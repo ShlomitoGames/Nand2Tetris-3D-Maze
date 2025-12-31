@@ -2,18 +2,17 @@ class Game {
     field int lastKey;
     field Board board;
 
-    constructor Game new() {
+    constructor Game new(int seed) {
         var Matrix maze;
-        var Random random;
-        let random = Random.new(10);
-        let maze = MazeBuilder.buildMaze(random); 
+        let maze = MazeBuilder.buildMaze(Random.new(seed)); 
         let board = Board.new(maze, 0, 0);
         do processKey(1);
         return this;
     }
 
-    method void gameLoop() {
+    method boolean gameLoop() {
         var int key;
+        var int coins;
         let key = Keyboard.keyPressed();
         
         if (key > 96) { //To accept both uppercase and lowercase
@@ -25,15 +24,19 @@ class Game {
             let lastKey = key;
             do processKey(key);
         }
-
-        return;
+        if (board.isInEnd()) {
+            let coins = board.getCoins();
+            do endScreen(coins);
+            return false;
+        }
+        return true;
     }
 
     method void processKey(int key) {
         if (key = 0) {
             return;
         }
-        do Draw.clearScreen();
+
         if (key = 87) { //W
             do board.movePlayer(0,1);
         }
@@ -52,16 +55,35 @@ class Game {
         if (key = 69) { //E
             do board.rotatePlayer(true);
         }
-
+        do Draw.clearScreen();
         do board.updateView();
+        do Output.moveCursor(0,0);
+        do Output.printString("Coins: ");
+        do Output.printInt(board.getCoins());
+        do Output.printString(" / 5");
         return;
     }
 
-    function void wait() {
-        var int i;
-        while (i < 10000) {
-            let i = i + 1;
-        }
+    method void endScreen(int coins) {
+        var int key;
+        do Screen.setColor(false);
+        do Screen.drawRectangle(0, 0, 511, 255);
+        do Screen.setColor(true);
+        do Output.moveCursor(8,25);
+        do Output.printString("You Escaped!");
+        do Output.moveCursor(12,20);
+        do Output.printString("Coins collected: ");
+        do Output.printInt(coins);
+        do Output.printString(" / 5");
+        do Output.moveCursor(20, 21);
+            do Output.printString("Press [R] to Restart");
+        while (~(Keyboard.keyPressed() = 82) & ~(Keyboard.keyPressed() = 114)) {}
+        return;
+    }
+
+    method void dispose() {
+        do board.dispose();
+        do Memory.deAlloc(this);
         return;
     }
 }

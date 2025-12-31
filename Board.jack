@@ -5,12 +5,17 @@ class Board {
     field int playerY;
     field int playerDir;
 
+    field int coinsCollected;
+    field boolean inEnd;
+
     constructor Board new(Matrix aMaze, int startX, int startY){
         let maze = aMaze;
         let playerX = startX;
         let playerY = startY;
         let view = View.new();
         let playerDir = 0;
+        let coinsCollected = 0;
+        let inEnd = false;
         return this;
     }
     
@@ -40,6 +45,13 @@ class Board {
             (newPosY < 0) | (newPosY > (maze.getHeight() - 1)) |
             (maze.getInt(newPosX,newPosY) = 1)) {
             return;
+        }
+        if (maze.getInt(newPosX,newPosY) = 4) {
+            let coinsCollected = coinsCollected + 1;
+            do maze.setInt(newPosX,newPosY,0);
+        }
+        if (maze.getInt(newPosX,newPosY) = 3) {
+            let inEnd = true;
         }
         
         let playerX = newPosX;
@@ -122,6 +134,14 @@ class Board {
             return 1;
         }
         return maze.getInt(newX,newY);
+    }
+
+    method int getCoins() {
+        return coinsCollected;
+    }
+
+    method boolean isInEnd() {
+        return inEnd;
     }
 
     method void dispose() {

@@ -1,0 +1,101 @@
+class PlayerMap {
+  // information about each cell
+  field Matrix mazeMap;
+  field int offsetX;
+  field int offsetY;
+
+  /// Creates a new maze map
+  constructor PlayerMa new(Matrix maze, int aOffsetX, int aOffsetY) {
+    var int width, height, x, y;
+    let offsetX = aOffsetX;
+    let offsetY = aOffsetY;
+    let width = maze.getWidth();
+    let height = maze.getHeight();
+    let mazeMap = Matrix.new(width, height);
+    let y = 0;
+    while (y < height) {
+      let x = 0;
+      while (x < width) {
+        do mazeMap.setInt(x, y, maze.getInt(x, y));
+        let x = x + 1;
+      }
+      let y = y + 1;
+    }
+    return this;
+  } 
+
+  method void dispose() {
+    do mazeMap.dispose();
+    do Memory.deAlloc(this);
+    return;
+  }
+
+  method char getPlayerSymbol(int playerDir) {
+    if (playerDir = 0) { // up
+      return 94; // ^
+    }
+    if (playerDir = 1) {
+      return 60; // <
+    }
+    if (playerDir = 2) {
+      return 118; // v
+    }
+    if (playerDir = 3) {
+      return 62; // >
+    }
+    // * is the unknown position symbol
+    return 42; // *
+  }
+
+  method char getSymbolCharacter(int x, int y) {
+    var int mazeCell, mapCell;
+    let mapCell = mazeMap.getInt(x, y);
+    if ((mapCell & 16) = 0) {
+      return 32; // ' '
+    }
+
+    let mazeCell = mapCell & 15;
+    if (mazeCell = 0) {
+      return 83;  // #
+    }
+    if (mazeCell = 1) {
+      return 88;  // _
+    }
+    if (mazeCell = 2) {
+      return 83; // S
+    }
+    if (mazeCell = 3) {
+      return 71; // >
+    }
+    if (mazeCell = 4) {
+      return 43; // <
+    }
+    return 63; // ?
+  }
+
+  method void visit(int x, int y) {
+    var int cell;
+    let cell = mazeMap.getInt(x, y) | 16;
+    do mazeMap.setInt(x, y, cell);
+    return;
+  }
+  /// Display the board on screen
+  method void display(int playerX, int playerY, int playerDir) {
+    var int x, y, width, height;
+    let width = mazeMap.getWidth();
+    let height = mazeMap.getHeight();
+    let y = 0;
+    while (y < height) {
+      do Output.moveCursor(offsetX, offsetY + y);
+      let x = 0;
+      while (x < width) { 
+        do Output.printChar(getSymbolCharacter(x, y));
+        let x = x + 1;        
+      }
+      let y = y + 1;
+    }
+    do Output.moveCursor(offsetX + playerX,offsetY + playerY);
+    do Output.printChar(getPlayerSymbol(playerDir));
+    return;
+  }
+}

@@ -15,8 +15,8 @@ class Main {
 
             do Output.moveCursor(14, 27);
             do Output.printString("Controls:");
-            do Output.moveCursor(16, 18);
-            do Output.printString("[WASD] Move   [QE] Rotate");
+            do Output.moveCursor(16, 14);
+            do Output.printString("[WASD] Move    [QE] Rotate    [M] Map");
 
             do Output.moveCursor(20, 20);
             do Output.printString("Press any key to begin.");

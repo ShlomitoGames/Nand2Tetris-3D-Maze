@@ -30,7 +30,7 @@ class PlayerMap {
     return;
   }
 
-  method char getPlayerSymbol(int playerDir) {
+  function char getPlayerSymbol(int playerDir) {
     if (playerDir = 0) { // up
       return 94; // ^
     }
@@ -47,7 +47,7 @@ class PlayerMap {
     return 42; // *
   }
 
-  method char getMazeSymbol(int x, int y) {
+  function char getMazeSymbol(int x, int y) {
     var int mazeCell, mapCell;
     let mapCell = mazeMap.getInt(x, y);
     if ((mapCell & 16) = 0) {
@@ -58,12 +58,10 @@ class PlayerMap {
     return MazeBuilder.getCellSymbol(mazeCell);
   }
 
-  method void visit(int x, int y) {
-    var int cell;
-    let cell = mazeMap.getInt(x, y) | 16;
-    do mazeMap.setInt(x, y, cell);
-    return;
+  method int getSymbol(int x, int y) {
+    return mazeMap.getInt(x, y);
   }
+
   /// Display the board on screen
   method void display(int playerX, int playerY, int playerDir) {
     var int x, y, width, height;
@@ -76,9 +74,9 @@ class PlayerMap {
       let x = 0;
       while (x < width) { 
         if ((playerX = x) & (playerY = y)) {
-          let mapCellSym = getPlayerSymbol(playerDir);
+          let mapCellSym = PlayerMap.getPlayerSymbol(playerDir);
         } else {
-          let mapCellSym = getMazeSymbol(x, y);
+          let mapCellSym = PlayerMap.getMazeSymbol(x, y);
         }
         do Output.printChar(mapCellSym);
         let x = x + 1;        

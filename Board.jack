@@ -68,9 +68,9 @@ class Board {
     }
     
     //Rotates the player
-    //0 = facing up
+    //0 = facing down
     //1 = facing right
-    //2 = facing down
+    //2 = facing up
     //3 = facing left
     method void rotatePlayer(boolean direction) {
         var int value;
@@ -116,41 +116,43 @@ class Board {
     }
 
     method void updateMap() {
-        var int delta;
+        var int delta, delta2;
         let delta = 1;
         if (playerDir = 0) { 
-            // Why it a plus for right
-            while ((delta < 6) & ((playerY + delta) < maze.getHeight()) & ~(maze.getInt(playerX, playerY + delta) = 1)) {
+            while ((delta < 5) & ((playerY + delta) < maze.getHeight()) & ~(maze.getInt(playerX, playerY + delta) = 1)) {
                 let delta = delta + 1;
             }
-            do playerMap.visitArea(playerX - 1, playerY - delta, 1, delta, 1);
-            do playerMap.visitArea(playerX, playerY - delta, 1, delta, 2);
-            do playerMap.visitArea(playerX + 1, playerY - delta, 1, delta, 1);
+            let delta2 = Math.max(delta - 1, 1);
+            do playerMap.visitArea(playerX - 1, playerY, 1, delta2, 1);
+            do playerMap.visitArea(playerX, playerY, 1, delta, 2);
+            do playerMap.visitArea(playerX + 1, playerY, 1, delta2, 1);
         }
         if (playerDir = 1) {
-            // Why it a plus for right
-            while ((delta < 6) & ~((playerX + delta) < maze.getWidth()) & ~(maze.getInt(playerX + delta, playerY) = 1)) {
+            while ((delta < 5) & ((playerX + delta) < maze.getWidth()) & ~(maze.getInt(playerX + delta, playerY) = 1)) {
                 let delta = delta + 1;
             }
-            do playerMap.visitArea(playerX, playerY - 1, delta, 1, 1);
+            let delta2 = Math.max(delta - 1, 1);
+            do playerMap.visitArea(playerX, playerY - 1, delta2, 1, 1);
             do playerMap.visitArea(playerX, playerY, delta, 1, 2);
-            do playerMap.visitArea(playerX, playerY + 1, delta, 1, 1);
+            do playerMap.visitArea(playerX, playerY + 1, delta2, 1, 1);
         }
         if (playerDir = 2) {
-            while ((delta < 6) & (~((playerY - delta) < 0)) & ~(maze.getInt(playerX, playerY - delta) = 1)) {
+            while ((delta < 5) & (~((playerY - delta) < 0)) & ~(maze.getInt(playerX, (playerY - delta)) = 1)) {
                 let delta = delta + 1;
             }
-            do playerMap.visitArea(playerX - 1 , playerY - delta, 1, delta, 1);
-            do playerMap.visitArea(playerX, playerY, 1, 6, 2);
-            do playerMap.visitArea(playerX + 1, playerY - delta, 1, delta, 1);
+            let delta2 = Math.max(delta - 1, 1);
+            do playerMap.visitArea(playerX - 1 , playerY - delta2 , 1, delta2, 1);
+            do playerMap.visitArea(playerX, playerY - delta, 1, delta, 2);
+            do playerMap.visitArea(playerX + 1, playerY - delta2, 1, delta2, 1);
         }
         if (playerDir = 3) {
-            while ((delta < 6) & (~((playerX - delta) < 0)) & ~(maze.getInt(playerX - delta, playerY) = 1)) {
+            while ((delta < 5) & ~((playerX - delta) < 0) & ~(maze.getInt(playerX - delta, playerY) = 1)) {
                 let delta = delta + 1;
             }
-            do playerMap.visitArea(playerX, playerY - 1, 6, 1, 2);
-            do playerMap.visitArea(playerX, playerY, 6, 1, 1);
-            do playerMap.visitArea(playerX, playerY + 1, 6, 1, 2);
+            let delta2 = Math.max(delta - 1, 1);
+            do playerMap.visitArea(playerX - delta2, playerY - 1, delta2, 1, 1);
+            do playerMap.visitArea(playerX - delta, playerY, delta, 1, 2);
+            do playerMap.visitArea(playerX - delta2, playerY + 1, delta2, 1, 1);
         }
         return;
 

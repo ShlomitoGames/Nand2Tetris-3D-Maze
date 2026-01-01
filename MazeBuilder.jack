@@ -78,7 +78,10 @@ class MazeBuilder {
   } 
 
   function Matrix buildMaze(Random rng){
-    // Notes:
+    // 0: Empty cell
+    // 1: Wall
+    // 2: Start
+    // 3: 
     var Matrix mazeMat;
     var Array postions, mazeBuffer;
     var int apples, x, y, cellIdx;

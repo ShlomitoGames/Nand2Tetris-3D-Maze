@@ -77,11 +77,31 @@ class MazeBuilder {
     return;
   } 
 
+  function char getCellSymbol(int cell) {
+    if (cell = 0) {
+      return 95;  // _
+    }
+    if (cell = 1) {
+      return 35;  // #
+    }
+    if (cell = 2) {
+      return 83; // S
+    }
+    if (cell = 3) {
+      return 71; // G
+    }
+    if (cell = 4) {
+      return 43; // +
+    }
+    return 63;
+  }
+
   function Matrix buildMaze(Random rng){
     // 0: Empty cell
     // 1: Wall
     // 2: Start
-    // 3: 
+    // 3: End
+    // 4: Coin
     var Matrix mazeMat;
     var Array postions, mazeBuffer;
     var int apples, x, y, cellIdx;
@@ -359,22 +379,7 @@ class MazeBuilder {
       let x = 0;
       while (x < width) {
         let cell = matrix.getInt(x, y);
-        let symbol = 63;
-        if (cell = 0) {
-          let symbol = 95;
-        }
-        if (cell = 1) {
-          let symbol = 88;
-        }
-        if (cell = 2) {
-          let symbol = 83;
-        }
-        if (cell = 3) {
-          let symbol = 71;
-        }
-        if (cell = 4) {
-          let symbol = 43;
-        }
+        let symbol = MazeBuilder.getCellSymbol(cell);
         do Output.printChar(symbol);
         let x = x + 1;
       }

@@ -35,13 +35,13 @@ class PlayerMap {
       return 94; // ^
     }
     if (playerDir = 1) {
-      return 60; // <
+      return 62; // >
     }
     if (playerDir = 2) {
       return 118; // v
     }
     if (playerDir = 3) {
-      return 62; // >
+      return 60; // <
     }
     // * is the unknown position symbol
     return 42; // *
@@ -55,22 +55,7 @@ class PlayerMap {
     }
 
     let mazeCell = mapCell & 15;
-    if (mazeCell = 0) {
-      return 83;  // #
-    }
-    if (mazeCell = 1) {
-      return 88;  // _
-    }
-    if (mazeCell = 2) {
-      return 83; // S
-    }
-    if (mazeCell = 3) {
-      return 71; // >
-    }
-    if (mazeCell = 4) {
-      return 43; // <
-    }
-    return 63; // ?
+    return MazeBuilder.getCellSymbol(mazeCell);
   }
 
   method void visit(int x, int y) {

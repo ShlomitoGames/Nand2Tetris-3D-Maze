@@ -64,6 +64,7 @@ class Board {
         
         let playerX = newPosX;
         let playerY = newPosY;
+        do playerMap.visit(playerX, playerY);
         return;
     }
     

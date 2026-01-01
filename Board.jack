@@ -24,29 +24,30 @@ class Board {
 
     method void showMap() {
         do playerMap.display(maze, playerX, playerY, playerDir);
+        do Output.printInt(playerDir);
         return;
     }
     
     //Moves the player by (x,y) blocks
     //x and y cannot be outside the range [-1,1]
-    method void movePlayer(int x, int y) {
+    method void movePlayer(int dx, int dy) {
         var int newPosX;
         var int newPosY;
         if (playerDir = 0) {
-            let newPosX = playerX + x;
-            let newPosY = playerY + y;
+            let newPosX = playerX + dx;
+            let newPosY = playerY + dy;
         }
         if (playerDir = 1) {
-            let newPosX = playerX + y;
-            let newPosY = playerY - x;
+            let newPosX = playerX + dy;
+            let newPosY = playerY - dx;
         }
         if (playerDir = 2) {
-            let newPosX = playerX - x;
-            let newPosY = playerY - y;
+            let newPosX = playerX - dx;
+            let newPosY = playerY - dy;
         }
         if (playerDir = 3) {
-            let newPosX = playerX - y;
-            let newPosY = playerY + x;
+            let newPosX = playerX - dy;
+            let newPosY = playerY + dx;
         }
 
         if ((newPosX < 0) | (newPosX > (maze.getWidth() - 1)) | 
@@ -64,7 +65,6 @@ class Board {
         
         let playerX = newPosX;
         let playerY = newPosY;
-        do playerMap.visit(playerX, playerY);
         return;
     }
     
@@ -111,7 +111,50 @@ class Board {
         }
         do view.setView(viewMatrix);
         do view.drawView();
+        do updateMap();
+        // attempt to visit area
         return;
+    }
+
+    method void updateMap() {
+        var int delta;
+        let delta = 1;
+        if (playerDir = 0) { 
+            // Why it a plus for right
+            while ((delta < 6) & ((playerY + delta) < maze.getHeight()) & ~(maze.getInt(playerX, playerY + delta) = 1)) {
+                let delta = delta + 1;
+            }
+            do playerMap.visitArea(playerX - 1, playerY - delta, 1, delta, 1);
+            do playerMap.visitArea(playerX, playerY - delta, 1, delta, 2);
+            do playerMap.visitArea(playerX + 1, playerY - delta, 1, delta, 1);
+        }
+        if (playerDir = 1) {
+            // Why it a plus for right
+            while ((delta < 6) & ~((playerX + delta) < maze.getWidth()) & ~(maze.getInt(playerX + delta, playerY) = 1)) {
+                let delta = delta + 1;
+            }
+            do playerMap.visitArea(playerX, playerY - 1, delta, 1, 1);
+            do playerMap.visitArea(playerX, playerY, delta, 1, 2);
+            do playerMap.visitArea(playerX, playerY + 1, delta, 1, 1);
+        }
+        if (playerDir = 2) {
+            while ((delta < 6) & (~((playerY - delta) < 0)) & ~(maze.getInt(playerX, playerY - delta) = 1)) {
+                let delta = delta + 1;
+            }
+            do playerMap.visitArea(playerX - 1 , playerY - delta, 1, delta, 1);
+            do playerMap.visitArea(playerX, playerY, 1, 6, 2);
+            do playerMap.visitArea(playerX + 1, playerY - delta, 1, delta, 1);
+        }
+        if (playerDir = 3) {
+            while ((delta < 6) & (~((playerX - delta) < 0)) & ~(maze.getInt(playerX - delta, playerY) = 1)) {
+                let delta = delta + 1;
+            }
+            do playerMap.visitArea(playerX, playerY - 1, 6, 1, 2);
+            do playerMap.visitArea(playerX, playerY, 6, 1, 1);
+            do playerMap.visitArea(playerX, playerY + 1, 6, 1, 2);
+        }
+        return;
+
     }
 
     method int getViewSquare(int x, int y) {

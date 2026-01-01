@@ -1,8 +1,13 @@
 class PlayerMap {
   // information about each cell if ivisted or not
+  // Visit map can have the following values:
+  // 0 - unknown cell
+  // 1 - unknown area
+  // 2 - area that is known if it's occupied or non-occupied
   field Matrix visitMap;
   field int offsetX;
   field int offsetY;
+
 
   /// Creates a new maze map
   constructor PlayerMap new(Matrix maze, int aOffsetX, int aOffsetY) {
@@ -34,7 +39,7 @@ class PlayerMap {
     if (playerDir = 0) { // up
       return 94; // ^
     }
-    if (playerDir = 1) {
+    if (playerDir = 1) { // right
       return 62; // >
     }
     if (playerDir = 2) {
@@ -47,15 +52,28 @@ class PlayerMap {
     return 42; // *
   }
 
-  method void visit(int x, int y) {
-    do visitMap.setInt(x, y, 1);
+  method void visitArea(int left, int top, int w, int h, int value) {
+    var int x, y, bottom, right, visitState;
+    let right = Math.min(left + w, visitMap.getWidth());
+    let bottom = Math.min(top + h, visitMap.getHeight());
+    let y = Math.max(top, 0);
+    while (y < bottom) {
+      let x = Math.max(left, 0);
+      while (x < right) {
+        let visitState = visitMap.getInt(x, y);
+        if (value > visitState) {
+          do visitMap.setInt(x, y, value);
+        }
+        let x = x  + 1;
+      }
+      let y = y + 1;
+    } 
     return;
   }
 
-
   /// Display the board on screen
   method void display(Matrix maze, int playerX, int playerY, int playerDir) {
-    var int x, y, width, height, mask;
+    var int x, y, width, height, mask, visitState, mazeCell;
     var char cellChar;
     let width = visitMap.getWidth();
     let height = visitMap.getHeight();
@@ -67,15 +85,22 @@ class PlayerMap {
         let cellChar = 0;
         if ((playerX = x) & (playerY = y)) {
           let cellChar = PlayerMap.getPlayerSymbol(playerDir);
-        }
-        if ((cellChar = 0)) {
-          let mask = visitMap.getInt(x,y);
-          if (mask = 0) {
+        } else {
+          let visitState = visitMap.getInt(x, y);
+          let mazeCell = maze.getInt(x, y);
+          if (visitState = 0) {
             let cellChar = 32; // ' '
           }
-        }
-        if (cellChar = 0) {
-          let cellChar = MazeBuilder.getCellSymbol(maze.getInt(x, y));
+          if (visitState = 1) {
+            if (mazeCell = 1) { // Wall
+              let cellChar = MazeBuilder.getCellSymbol(1);
+            } else { // Anything else
+              let cellChar = MazeBuilder.getCellSymbol(0);
+            }
+          }
+          if (visitState = 2) {
+            let cellChar = MazeBuilder.getCellSymbol(maze.getInt(x, y));          
+          }
         }
         do Output.printChar(cellChar);
         let x = x + 1;        

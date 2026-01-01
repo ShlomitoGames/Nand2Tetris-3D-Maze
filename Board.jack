@@ -4,6 +4,8 @@ class Board {
     field int playerX;
     field int playerY;
     field int playerDir;
+    field PlayerMap playerMap;
+
 
     field int coinsCollected;
     field boolean inEnd;
@@ -13,10 +15,16 @@ class Board {
         let playerX = startX;
         let playerY = startY;
         let view = View.new();
+        let playerMap = PlayerMap.new(maze, 0, 1);
         let playerDir = 1;
         let coinsCollected = 0;
         let inEnd = false;
         return this;
+    }
+
+    method void showMap() {
+        do playerMap.display(playerX, playerY, playerDir);
+        return;
     }
     
     //Moves the player by (x,y) blocks
@@ -148,6 +156,7 @@ class Board {
     method void dispose() {
         do maze.dispose();
         do view.dispose();
+        do playerMap.dispose();
         do Memory.deAlloc(this);
         return;
     }

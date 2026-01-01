@@ -5,7 +5,7 @@ class PlayerMap {
   field int offsetY;
 
   /// Creates a new maze map
-  constructor PlayerMa new(Matrix maze, int aOffsetX, int aOffsetY) {
+  constructor PlayerMap new(Matrix maze, int aOffsetX, int aOffsetY) {
     var int width, height, x, y;
     let offsetX = aOffsetX;
     let offsetY = aOffsetY;
@@ -47,7 +47,7 @@ class PlayerMap {
     return 42; // *
   }
 
-  method char getSymbolCharacter(int x, int y) {
+  method char getMazeSymbol(int x, int y) {
     var int mazeCell, mapCell;
     let mapCell = mazeMap.getInt(x, y);
     if ((mapCell & 16) = 0) {
@@ -82,20 +82,25 @@ class PlayerMap {
   /// Display the board on screen
   method void display(int playerX, int playerY, int playerDir) {
     var int x, y, width, height;
+    var char mapCellSym;
     let width = mazeMap.getWidth();
     let height = mazeMap.getHeight();
     let y = 0;
     while (y < height) {
-      do Output.moveCursor(offsetX, offsetY + y);
+      do Output.moveCursor(offsetY + y, offsetX);
       let x = 0;
       while (x < width) { 
-        do Output.printChar(getSymbolCharacter(x, y));
+        if ((playerX = x) & (playerY = y)) {
+          let mapCellSym = getPlayerSymbol(playerDir);
+        } else {
+          let mapCellSym = getMazeSymbol(x, y);
+        }
+        do Output.printChar(mapCellSym);
         let x = x + 1;        
       }
       let y = y + 1;
+      do Output.println();
     }
-    do Output.moveCursor(offsetX + playerX,offsetY + playerY);
-    do Output.printChar(getPlayerSymbol(playerDir));
     return;
   }
 }

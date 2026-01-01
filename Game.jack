@@ -9,7 +9,7 @@ class Game {
         let maze = MazeBuilder.buildMaze(random); 
         do random.dispose();
         let board = Board.new(maze, 0, 15);
-        do processKey(1);
+        do processFrame(1);
         return this;
     }
 
@@ -25,7 +25,7 @@ class Game {
         //Q = 81, E = 69
         if (~(key = lastKey)) {
             let lastKey = key;
-            do processKey(key);
+            do processFrame(key);
         }
         if (board.isInEnd()) {
             let coins = board.getCoins();
@@ -35,7 +35,7 @@ class Game {
         return true;
     }
 
-    method void processKey(int key) {
+    method void processFrame(int key) {
         if (key = 0) {
             return;
         }
@@ -65,6 +65,7 @@ class Game {
         do Output.printString("Coins: ");
         do Output.printInt(board.getCoins());
         do Output.printString(" / 5");
+        do board.showMap();
         return;
     }
 
@@ -80,7 +81,7 @@ class Game {
         do Output.printInt(coins);
         do Output.printString(" / 5");
         do Output.moveCursor(20, 21);
-            do Output.printString("Press [R] to Restart");
+        do Output.printString("Press [R] to Restart");
         while (~(Keyboard.keyPressed() = 82) & ~(Keyboard.keyPressed() = 114)) {}
         return;
     }

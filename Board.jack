@@ -23,7 +23,7 @@ class Board {
     }
 
     method void showMap() {
-        do playerMap.display(playerX, playerY, playerDir);
+        do playerMap.display(maze, playerX, playerY, playerDir);
         return;
     }
     

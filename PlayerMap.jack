@@ -1,6 +1,6 @@
 class PlayerMap {
-  // information about each cell
-  field Matrix mazeMap;
+  // information about each cell if ivisted or not
+  field Matrix visitMap;
   field int offsetX;
   field int offsetY;
 
@@ -11,12 +11,12 @@ class PlayerMap {
     let offsetY = aOffsetY;
     let width = maze.getWidth();
     let height = maze.getHeight();
-    let mazeMap = Matrix.new(width, height);
+    let visitMap = Matrix.new(width, height);
     let y = 0;
     while (y < height) {
       let x = 0;
       while (x < width) {
-        do mazeMap.setInt(x, y, maze.getInt(x, y));
+        do visitMap.setInt(x, y, 0);
         let x = x + 1;
       }
       let y = y + 1;
@@ -25,7 +25,7 @@ class PlayerMap {
   } 
 
   method void dispose() {
-    do mazeMap.dispose();
+    do visitMap.dispose();
     do Memory.deAlloc(this);
     return;
   }
@@ -47,38 +47,37 @@ class PlayerMap {
     return 42; // *
   }
 
-  function char getMazeSymbol(int x, int y) {
-    var int mazeCell, mapCell;
-    let mapCell = mazeMap.getInt(x, y);
-    if ((mapCell & 16) = 0) {
-      return 32; // ' '
-    }
-
-    let mazeCell = mapCell & 15;
-    return MazeBuilder.getCellSymbol(mazeCell);
+  method void visit(int x, int y) {
+    do visitMap.setInt(x, y, 1);
+    return;
   }
 
-  method int getSymbol(int x, int y) {
-    return mazeMap.getInt(x, y);
-  }
 
   /// Display the board on screen
-  method void display(int playerX, int playerY, int playerDir) {
-    var int x, y, width, height;
-    var char mapCellSym;
-    let width = mazeMap.getWidth();
-    let height = mazeMap.getHeight();
+  method void display(Matrix maze, int playerX, int playerY, int playerDir) {
+    var int x, y, width, height, mask;
+    var char cellChar;
+    let width = visitMap.getWidth();
+    let height = visitMap.getHeight();
     let y = 0;
     while (y < height) {
       do Output.moveCursor(offsetY + y, offsetX);
       let x = 0;
       while (x < width) { 
+        let cellChar = 0;
         if ((playerX = x) & (playerY = y)) {
-          let mapCellSym = PlayerMap.getPlayerSymbol(playerDir);
-        } else {
-          let mapCellSym = PlayerMap.getMazeSymbol(x, y);
+          let cellChar = PlayerMap.getPlayerSymbol(playerDir);
         }
-        do Output.printChar(mapCellSym);
+        if ((cellChar = 0)) {
+          let mask = visitMap.getInt(x,y);
+          if (mask = 0) {
+            let cellChar = 32; // ' '
+          }
+        }
+        if (cellChar = 0) {
+          let cellChar = MazeBuilder.getCellSymbol(maze.getInt(x, y));
+        }
+        do Output.printChar(cellChar);
         let x = x + 1;        
       }
       let y = y + 1;

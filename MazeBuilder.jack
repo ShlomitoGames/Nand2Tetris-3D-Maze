@@ -3,7 +3,7 @@ class MazeBuilder {
   // all items before it are sorted
   function void insertionSortLast(Array data, int lastIndex){
     var int i, temp;
-    if (lastIndex < 2){
+    if (lastIndex < 1){
       return;
     }
     let i = 0;

@@ -8,7 +8,7 @@ class Game {
         let random = Random.new(seed);
         let maze = MazeBuilder.buildMaze(random); 
         do random.dispose();
-        let board = Board.new(maze, 0, 0);
+        let board = Board.new(maze, 0, 15);
         do processKey(1);
         return this;
     }
@@ -40,23 +40,24 @@ class Game {
             return;
         }
 
+        //Mirroring left and right... still not sure why
         if (key = 87) { //W
             do board.movePlayer(0,1);
         }
         if (key = 65) { //A
-            do board.movePlayer(-1,0);
+            do board.movePlayer(1,0);
         }
         if (key = 83) { //S
             do board.movePlayer(0,-1);
         }
         if (key = 68) { //D
-            do board.movePlayer(1,0);
+            do board.movePlayer(-1,0);
         }
         if (key = 81) { //Q
-            do board.rotatePlayer(false);
+            do board.rotatePlayer(true);
         }
         if (key = 69) { //E
-            do board.rotatePlayer(true);
+            do board.rotatePlayer(false);
         }
         do Draw.clearScreen();
         do board.updateView();

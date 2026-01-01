@@ -13,7 +13,7 @@ class Board {
         let playerX = startX;
         let playerY = startY;
         let view = View.new();
-        let playerDir = 0;
+        let playerDir = 1;
         let coinsCollected = 0;
         let inEnd = false;
         return this;
@@ -91,11 +91,12 @@ class Board {
             let value = getViewSquare(0, y);
             do viewMatrix.setInt(0,y,value);
             
+            //Mirroring left and right... still not sure why
             let value = getViewSquare(-1, y);
-            do viewMatrix.setInt(1,y,value);
+            do viewMatrix.setInt(2,y,value);
 
             let value = getViewSquare(1, y);
-            do viewMatrix.setInt(2,y,value);
+            do viewMatrix.setInt(1,y,value);
             
             let y = y + 1;
         }

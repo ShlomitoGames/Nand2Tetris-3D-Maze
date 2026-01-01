@@ -36,13 +36,13 @@ class PlayerMap {
   }
 
   function char getPlayerSymbol(int playerDir) {
-    if (playerDir = 0) { // up
+    if (playerDir = 2) { // up
       return 94; // ^
     }
     if (playerDir = 1) { // right
       return 62; // >
     }
-    if (playerDir = 2) {
+    if (playerDir = 0) {
       return 118; // v
     }
     if (playerDir = 3) {
@@ -93,13 +93,13 @@ class PlayerMap {
           }
           if (visitState = 1) {
             if (mazeCell = 1) { // Wall
-              let cellChar = MazeBuilder.getCellSymbol(1);
+              let cellChar = PlayerMap.getCellSymbol(1);
             } else { // Anything else
-              let cellChar = MazeBuilder.getCellSymbol(0);
+              let cellChar = PlayerMap.getCellSymbol(0);
             }
           }
           if (visitState = 2) {
-            let cellChar = MazeBuilder.getCellSymbol(maze.getInt(x, y));          
+            let cellChar = PlayerMap.getCellSymbol(maze.getInt(x, y));          
           }
         }
         do Output.printChar(cellChar);
@@ -110,4 +110,43 @@ class PlayerMap {
     }
     return;
   }
+
+  function char getCellSymbol(int cell) {
+    if (cell = 0) {
+      return 46;  // _ .
+    }
+    if (cell = 1) {
+      return 35;  // #
+    }
+    if (cell = 2) {
+      return 83; // S
+    }
+    if (cell = 3) {
+      return 71; // G
+    }
+    if (cell = 4) {
+      return 43; // +
+    }
+    return 63;
+  }
+
+  function void printDebugMaze(Matrix matrix) {
+    var int x, y, width, height, cell;
+    var char symbol;
+    let width  = matrix.getWidth();
+    let height  = matrix.getHeight();
+    let y = 0;
+    while (y < height) {
+      let x = 0;
+      while (x < width) {
+        let cell = matrix.getInt(x, y);
+        let symbol = PlayerMap.getCellSymbol(cell);
+        do Output.printChar(symbol);
+        let x = x + 1;
+      }
+      do Output.println();
+      let y = y + 1;
+    }
+    return;
+  }  
 }

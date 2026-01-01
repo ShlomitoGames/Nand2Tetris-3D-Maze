@@ -64,14 +64,15 @@ class Game {
         if (key = 77) {
             let mapDisplayed = ~mapDisplayed;
         }
-        do Draw.clearScreen();
-        do board.updateView();
-        do Output.moveCursor(0,0);
-        do Output.printString("Coins: ");
-        do Output.printInt(board.getCoins());
-        do Output.printString(" / 5");
         if (mapDisplayed) {
             do board.showMap();
+        } else {
+            do Draw.clearScreen();
+            do board.updateView();
+            do Output.moveCursor(0,0);
+            do Output.printString("Coins: ");
+            do Output.printInt(board.getCoins());
+            do Output.printString(" / 5");
         }
         return;
     }

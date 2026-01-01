@@ -64,7 +64,7 @@ class MazeBuilder {
     let coinIndex = 0;
     while ((idx < mazeSize) & (coinIndex < 5)) {
         let cell = mazeBuff[idx];
-        if (cell = 1) {
+        if (cell = 0) {
           let cellCount = cellCount + 1;
           if (cellCount = positions[coinIndex]) {
             let mazeBuff[idx] = 4;
@@ -75,25 +75,6 @@ class MazeBuilder {
     }
     do positions.dispose();
     return;
-  } 
-
-  function char getCellSymbol(int cell) {
-    if (cell = 0) {
-      return 95;  // _
-    }
-    if (cell = 1) {
-      return 35;  // #
-    }
-    if (cell = 2) {
-      return 83; // S
-    }
-    if (cell = 3) {
-      return 71; // G
-    }
-    if (cell = 4) {
-      return 43; // +
-    }
-    return 63;
   }
 
   function Matrix buildMaze(Random rng){
@@ -368,24 +349,4 @@ class MazeBuilder {
     do MazeBuilder.placeCoins(mazeMat, rng);
     return mazeMat;
   }
-  
-  function void printMaze(Matrix matrix) {
-    var int x, y, width, height, cell;
-    var char symbol;
-    let width  = matrix.getWidth();
-    let height  = matrix.getHeight();
-    let y = 0;
-    while (y < height) {
-      let x = 0;
-      while (x < width) {
-        let cell = matrix.getInt(x, y);
-        let symbol = MazeBuilder.getCellSymbol(cell);
-        do Output.printChar(symbol);
-        let x = x + 1;
-      }
-      do Output.println();
-      let y = y + 1;
-    }
-    return;
-  }  
 }

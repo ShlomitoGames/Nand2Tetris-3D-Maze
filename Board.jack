@@ -15,7 +15,7 @@ class Board {
         let playerX = startX;
         let playerY = startY;
         let view = View.new();
-        let playerMap = PlayerMap.new(maze, 0, 1);
+        let playerMap = PlayerMap.new(maze, 47, 7);
         let playerDir = 1;
         let coinsCollected = 0;
         let inEnd = false;
@@ -24,7 +24,6 @@ class Board {
 
     method void showMap() {
         do playerMap.display(maze, playerX, playerY, playerDir);
-        do Output.printInt(playerDir);
         return;
     }
     
